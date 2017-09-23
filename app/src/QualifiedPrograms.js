@@ -46,7 +46,6 @@ class QualifiedPrograms extends Component{
 }
 
 function mapStateToProps(state) {
-    console.log(state.eligiblePrograms);
     return {
         answers: state.answers.responses,
         programs: state.eligiblePrograms

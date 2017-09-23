@@ -14,6 +14,7 @@ import {
 } from './actions/answers';
 import { push } from 'react-router-redux'
 import QualifiedPrograms from './QualifiedPrograms';
+import translation from './translation'
 
 class Home extends Component {
 
@@ -29,7 +30,7 @@ class Home extends Component {
         }
 
         if(currentQuestion == null) {
-            return <div>Loading...</div>
+            return <div>{translation.t('loading')}</div>
         }
         
 

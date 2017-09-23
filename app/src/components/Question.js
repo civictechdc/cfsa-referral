@@ -11,6 +11,7 @@ import {
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as AnswerActions from '../actions/answers'
+import translation from '../translation';
 
 class Question extends React.Component {
 
@@ -34,13 +35,13 @@ class Question extends React.Component {
                             <FormGroup check>
                                 <Label check>
                                 <Input type="radio" checked={this.props.currentResponse === true} name={this.props.current} onClick={() => this.answerQuestion(true)} />{' '}
-                                {this.props.answer.truekey}
+                                {translation.t(this.props.answer.truekey)}
                                 </Label>
                             </FormGroup>
                             <FormGroup check>
                                 <Label check>
                                 <Input type="radio" checked={this.props.currentResponse === false} name={this.props.current} onClick={() => this.answerQuestion(false)} />{' '}
-                                {this.props.answer.falsekey}
+                                {translation.t(this.props.answer.falsekey)}
                                 </Label>
                             </FormGroup>
                         </FormGroup>
