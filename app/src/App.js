@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Home from  './Home';
+import About from './About';
+import Contact from './Contact';
+import Linkbar from './Linkbar';
 
 import ReactDOM from 'react-dom'
 
@@ -43,7 +46,10 @@ const App = () => {
       { /* ConnectedRouter will use the store from Provider automatically */ }
       <ConnectedRouter history={history}>
         <div>
+          <Linkbar />
           <Route exact path="/" component={Home}/>
+          <Route exact path="/About" component={About} />
+          <Route exact path="/Contact" component={Contact} />
         </div>
       </ConnectedRouter>
     </Provider>
