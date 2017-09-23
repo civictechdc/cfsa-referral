@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
     Container,
     Row,
@@ -8,28 +8,46 @@ import {
     Nav,
     NavItem,
     NavLink,
-    NavbarBrand
+    NavbarBrand,
+    Collapse
 } from 'reactstrap';
 
 
-const Linkbar=() =>{
-  return (
-  <Container>
-    <Navbar toggleable>
-      <NavbarToggler right onClick={this.toggle} />
-      <NavbarBrand href="/">Home</NavbarBrand>
-      <Nav className="ml-auto" navbar>
-        <NavItem>
-          <NavLink href="/About">About</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="/Contact">Contact</NavLink>
-        </NavItem>
-      </Nav>
-    </Navbar>
+export default class Linkbar extends Component{
+  constructor(props){
+    super(props);
 
-  </Container>
-  );
+    this.toggleNavbar = this.toggleNavbar.bind(this);
+    this.state = {
+      collapsed: true
+    };
+  }
+
+  toggleNavbar() {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
+  }
+
+  render(){
+    return (
+      <Container>
+        <Navbar>
+          <NavbarToggler right onClick={this.toggleNavbar} />
+          <Collapse className="navbar-toggleable-md" isOpen={!this.state.collapsed}>
+            <NavbarBrand href="/">Home</NavbarBrand>
+            <Nav navbar>
+              <NavItem>
+                <NavLink href="/About">About</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/Contact">Contact</NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+
+      </Container>
+    );
+  }
 }
-
-export default Linkbar;
