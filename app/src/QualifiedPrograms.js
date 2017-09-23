@@ -36,10 +36,10 @@ class QualifiedPrograms extends Component{
                     </Col>
                 </Row>
                 {
-                            this.props.programs.map((program) => {
-                                return (<Row><Col>{program.program}</Col></Row>);
-                            })
-                        }
+                    this.props.programs.map((program) => {
+                        return (<Row><Col>{program.program}</Col></Row>);
+                    })
+                }
             </Container>
         )
     }

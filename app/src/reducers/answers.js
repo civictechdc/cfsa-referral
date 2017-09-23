@@ -9,7 +9,8 @@ const initialState = {
     previous: [],
     future: [],
     responses: {},
-    done: false
+    done: false,
+    calculated: false
 }
 
 function answers(state = initialState, action) {

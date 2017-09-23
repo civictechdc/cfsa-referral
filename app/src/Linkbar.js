@@ -31,12 +31,12 @@ export default class Linkbar extends Component{
 
   render(){
     return (
-      <Container>
+      <Container fluid={true}>
         <Navbar color="faded" light toggleable>
+          <NavbarBrand href="/">CFSA Referral Program</NavbarBrand>
           <NavbarToggler right onClick={this.toggleNavbar} />
-          <Collapse className="navbar-toggleable-md" isOpen={!this.state.collapsed}>
-            <NavbarBrand href="/">Home</NavbarBrand>
-            <Nav className="ml-auto" navbar>
+          <Collapse className="navbar-toggleable-md" isOpen={!this.state.collapsed} navbar>
+            <Nav className="ml-auto" >
               <NavItem>
                 <NavLink href="/About">About</NavLink>
               </NavItem>
@@ -46,7 +46,6 @@ export default class Linkbar extends Component{
             </Nav>
           </Collapse>
         </Navbar>
-
       </Container>
     );
   }

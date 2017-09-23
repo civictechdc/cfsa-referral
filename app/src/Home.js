@@ -37,12 +37,19 @@ class Home extends Component {
 
         return (
             <Container>
+                <Row>
+                    <Col className="text-center mt-2">
+                        <p>
+                            Welcome to the CFSA Referral Program!  Please start filling out the questions in 
+                            order to get some recommendations for potential programs to refer the family or
+                            individual to.
+                        </p>
+                    </Col>
+                </Row>
                 <Row>   
                     <Col>
                         <Question current={currentQuestion} />
                     </Col>
-                </Row>
-                <Row>
                 </Row>
             </Container>
         )

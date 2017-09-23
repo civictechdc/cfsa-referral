@@ -6,7 +6,10 @@ import {
     Form,
     FormGroup,
     Label,
-    Input
+    Input,
+    Card,
+    CardBlock,
+    CardTitle
 } from 'reactstrap';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -27,27 +30,29 @@ class Question extends React.Component {
 
     render() {
         return (
-            <Row>   
-                <Col>
-                    <Form>
-                        <FormGroup tag="fieldset">
-                            <legend>{this.props.text}</legend>
-                            <FormGroup check>
-                                <Label check>
-                                <Input type="radio" checked={this.props.currentResponse === true} name={this.props.current} onClick={() => this.answerQuestion(true)} />{' '}
-                                {translation.t(this.props.answer.truekey)}
-                                </Label>
+            <Row className="mt-2">   
+                <Col sm={{ size: 6, push: 2, pull: 2, offset: 1 }}>
+                    <Card className="text-center">
+                        <CardBlock>
+                            <CardTitle>{this.props.text}</CardTitle>
+                        </CardBlock>
+                        <Form className="mr-3">
+                            <FormGroup tag="fieldset">
+                                <FormGroup check>
+                                    <Label check>
+                                    <Input type="radio" checked={this.props.currentResponse === true} name={this.props.current} onClick={() => this.answerQuestion(true)} />{' '}
+                                    {translation.t(this.props.answer.truekey)}
+                                    </Label>
+                                </FormGroup>
+                                <FormGroup check>
+                                    <Label check>
+                                    <Input type="radio" checked={this.props.currentResponse === false} name={this.props.current} onClick={() => this.answerQuestion(false)} />{' '}
+                                    {translation.t(this.props.answer.falsekey)}
+                                    </Label>
+                                </FormGroup>
                             </FormGroup>
-                            <FormGroup check>
-                                <Label check>
-                                <Input type="radio" checked={this.props.currentResponse === false} name={this.props.current} onClick={() => this.answerQuestion(false)} />{' '}
-                                {translation.t(this.props.answer.falsekey)}
-                                </Label>
-                            </FormGroup>
-                        </FormGroup>
-                    </Form>
-                    <div></div>
-                   
+                        </Form>
+                    </Card>
                 </Col>
             </Row>
         )
