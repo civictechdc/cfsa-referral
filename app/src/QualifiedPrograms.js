@@ -2,7 +2,11 @@ import React, {Component} from 'react';
 import {
     Container,
     Row,
-    Col
+    Col,
+    Card,
+    CardBlock,
+    CardTitle,
+    CardText
 } from 'reactstrap';
 
 import {
@@ -22,10 +26,49 @@ class QualifiedPrograms extends Component{
     }
 
 
+    renderAnswers() {
+        const { questions, answers} = this.props;
+        return (
+            <Row>
+                <Col>
+                    {
+                        Object.keys(answers).map((answer) => {
+                            const question = questions.find(question => question.id === answer);
+                           return(
+                                <div>
+                                    <p>{answers[answer]}</p>
+                                    <p>{}</p>
+                                </div>
+                           )
+                        })
+                    }
+                </Col>
+            </Row>
+        )
+    }
+
     render(){
         console.log(this.props);
-        if(this.props.programs.length === 0) {
+        if(!this.props.calculated) {
             return <div>Calculating...</div>
+        }
+
+        if(this.props.programs.length === 0) {
+            return (
+                <Container>
+                    <Row className="mt-3">   
+                        <Col>
+                            <Card>
+                                <CardBlock>
+                                    <CardTitle>Sorry, the family/individual is not eligible for any programs at this time</CardTitle>
+                                    <CardText>As the situtation changes, please make sure to consult this tool again.</CardText>
+                                </CardBlock>
+                            </Card>
+                        </Col>
+                    </Row>
+                    {this.renderAnswers()}
+                </Container>
+            )
         }
 
         return (
@@ -40,6 +83,7 @@ class QualifiedPrograms extends Component{
                         return (<Row><Col>{program.program}</Col></Row>);
                     })
                 }
+                {this.renderAnswers()}
             </Container>
         )
     }
@@ -48,7 +92,9 @@ class QualifiedPrograms extends Component{
 function mapStateToProps(state) {
     return {
         answers: state.answers.responses,
-        programs: state.eligiblePrograms
+        questions: state.data.questions,
+        programs: state.eligiblePrograms,
+        calculated: state.answers.calculated
     }
 }
 
