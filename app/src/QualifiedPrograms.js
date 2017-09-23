@@ -5,24 +5,52 @@ import {
     Col
 } from 'reactstrap';
 
-const PROGRAMS= ["Rapid Housing", "Project Connect"];
+import {
+    connect
+} from 'react-redux';
 
-export default class QualifiedPrograms extends Component{
+import {
+    calculateProgramsEligibity
+} from './actions/eligibilityActions';
+
+
+class QualifiedPrograms extends Component{
+
+    componentWillMount() {
+        const {dispatch, answers} = this.props;
+        dispatch(calculateProgramsEligibity(answers));
+    }
+
 
     render(){
-        var programRows=[];
-        for (var i=0;i<PROGRAMS.length;i++){
-            programRows.push(<Row><Col>{PROGRAMS[i]}</Col></Row>);
+        console.log(this.props);
+        if(this.props.programs.length === 0) {
+            return <div>Calculating...</div>
         }
+
         return (
             <Container>
                 <Row>   
                     <Col>
-                        You are eligible for these programs:
+                       Programs you are eligible for 
                     </Col>
                 </Row>
-                {programRows}
+                {
+                            this.props.programs.map((program) => {
+                                return (<Row><Col>{program.program}</Col></Row>);
+                            })
+                        }
             </Container>
         )
     }
 }
+
+function mapStateToProps(state) {
+    console.log(state.eligiblePrograms);
+    return {
+        answers: state.answers.responses,
+        programs: state.eligiblePrograms
+    }
+}
+
+export default connect(mapStateToProps)(QualifiedPrograms);

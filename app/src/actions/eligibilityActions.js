@@ -8,13 +8,12 @@ function addProgramEligibility(eligiblePrograms) {
     }
 }
 
-function calculateProgramEligibity() {
+export function calculateProgramsEligibity(responses) {
     return (dispatch, getState) => {
         const state = getState();
         const programs = state.data.programs;
-        const responses = state.answers.responses;
-
-        const eligiblePrograms = programs.reduce((currentProgram, eligiblePrograms) =>  {
+        
+        const eligiblePrograms = programs.reduce((eligiblePrograms, currentProgram) =>  {
             const requiredAnswers = currentProgram.questions;
             const eligible = calculateProgramEligibity(requiredAnswers, responses)
             if(eligible) {
@@ -28,8 +27,8 @@ function calculateProgramEligibity() {
 }
 
 function calculateProgramEligibity(requiredAnswers, responses) {
-    return Object.keys(requiredAnswers).reduce((requiredAnswer, isEligible) => {
-        return isEligible && responses[requiredAnswer] == requiredAnswers[requiredAnswer]
+    return Object.keys(requiredAnswers).reduce((isEligible, requiredAnswer) => {
+        return isEligible && responses[requiredAnswer] === requiredAnswers[requiredAnswer]
     }, true);
 }
 
