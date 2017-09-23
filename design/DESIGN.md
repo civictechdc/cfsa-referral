@@ -11,3 +11,6 @@ This outlines a domain breakdown of how the various pieces of the application wi
 
 ## WIP CFSA Design Spec
 This is a work in progress of how the application should function after it has been completed
+
+
+## What quesionts are already being asked

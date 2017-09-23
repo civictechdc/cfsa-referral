@@ -1,21 +1,44 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Home from  './Home';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+import ReactDOM from 'react-dom'
+
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+
+import createHistory from 'history/createBrowserHistory'
+import { Route } from 'react-router'
+
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+
+import 'bootstrap/dist/css/bootstrap.css';
+
+// Create a history of your choosing (we're using a browser history in this case)
+const history = createHistory()
+
+// Build the middleware for intercepting and dispatching navigation actions
+const middleware = routerMiddleware(history)
+
+// Add the reducer to your store on the `routing` key
+const store = createStore(
+  combineReducers({
+    routing: routerReducer
+  })
+)
+
+const App = () => {
+  return (
+    <Provider store={store}>
+      { /* ConnectedRouter will use the store from Provider automatically */ }
+      <ConnectedRouter history={history}>
+        <div>
+          <Route exact path="/" component={Home}/>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+      </ConnectedRouter>
+    </Provider>
+  )
 }
 
 export default App;
