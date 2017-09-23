@@ -1,6 +1,6 @@
 {
  "id": 1,
- "questionKey": "CFSA case state?",
+ "questionKey": "CFSA_CASE_STATE",
  "answer": {
    "type": "boolean",
    "truekey": "TRUE",
