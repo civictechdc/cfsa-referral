@@ -17,7 +17,7 @@ import data from './reducers/data';
 import eligiblePrograms from './reducers/eligiblePrograms';
 import 'bootstrap/dist/css/bootstrap.css';
 import logger from 'redux-logger';
-
+import ReduxThunk from 'redux-thunk'
 // Create a history of your choosing (we're using a browser history in this case)
 const history = createHistory()
 
@@ -34,7 +34,7 @@ const store = createStore(
     eligiblePrograms,
     routing: routerReducer
   }),
-  applyMiddleware(middleware, logger)
+  applyMiddleware(middleware, thunk, logger)
 )
 
 const App = () => {
