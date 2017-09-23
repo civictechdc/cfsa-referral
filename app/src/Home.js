@@ -29,6 +29,7 @@ class Home extends Component {
             return <Redirect to="/QualifiedPrograms"/>
         }
 
+        console.log(translation);
         if(currentQuestion == null) {
             return <div>{translation.t('loading')}</div>
         }

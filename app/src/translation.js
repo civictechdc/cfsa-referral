@@ -7,4 +7,4 @@ const translation = polyglot.extend({
 });
 // or
 
-export default translation;
+export default polyglot;
