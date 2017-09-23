@@ -10,7 +10,8 @@
         },
         "continueRules": {
           "false" : [2]
-        }
+        },
+        "start": true
       },
       {
         "id": 2,
@@ -21,8 +22,9 @@
           "falsekey": "FALSE"
         },
         "continueRules": {
-          "TRUE": [3, 4]
-        }
+          "true": [3, 4]
+        },
+        "start": false
       },
       {
         "id": 3,
@@ -33,7 +35,8 @@
           "falsekey": "FALSE"
         },
         "continueRules": {
-          }
+          },
+          "start": false
         },
         {
           "id": 4,
@@ -44,45 +47,60 @@
             "falsekey": "FALSE"
           },
           "continueRules": {
-            "TRUE": [5]
-          }
+            "true": [5]
+          },
+          "start": false
         },
         {
           "id":5,
           "question": "SUBSTANCE_ABUSE",
           "type": "boolean",
-          "answerKey":{
+          "answer":{
             "truekey": "TRUE",
             "falsekey": "FALSE"
           },
           "continueRules": {
-            "FALSE": [6]
-          }
+            "false": [6]
+          },
+          "start": false
         },
         {
           "id":6,
           "question": "ENROLLED_AFTERCARE",
           "type": "boolean",
-          "answerKey":{
+          "answer":{
             "truekey": "TRUE",
             "falsekey": "FALSE"
           },
           "continueRules": {
-          }
+          },
+          "start": false
         }
       ],
     "programs": [
       {
         "id": 1,
-        "program": "RAPID_FAM"
+        "program": "RAPID_FAM",
+        "questions": {
+          
+        }
       },
       {
         "id": 2,
-        "program": "RAPID_YOUTH"
+        "program": "RAPID_YOUTH",
+        "questions": {
+          
+        }
       },
       {
         "id": 3,
-        "program": "TRANS_FAM"
+        "program": "TRANS_FAM",
+        "questions": {
+          "1": true,
+          "2": true,
+          "3": true,
+          "4": true  
+        }
       },
       {
         "id": 4,

@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "4.0.0-alpha.6",
+    "font-awesome": "^4.7.0",
     "history": "^4.7.2",
     "i18n-react": "^0.4.0",
     "node-polyglot": "^2.2.2",

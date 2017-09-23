@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Home from  './Home';
+
 import Polyglot from 'node-polyglot';
+
+import About from './About';
+import Contact from './Contact';
+import Linkbar from './Linkbar';
+import QualifiedPrograms from './QualifiedPrograms';
 
 
 import ReactDOM from 'react-dom'
@@ -18,6 +24,7 @@ import answers from './reducers/answers';
 import data from './reducers/data';
 import eligiblePrograms from './reducers/eligiblePrograms';
 import 'bootstrap/dist/css/bootstrap.css';
+
 import logger from 'redux-logger';
 import thunk from 'redux-thunk'
 // Create a history of your choosing (we're using a browser history in this case)
@@ -45,7 +52,11 @@ const App = () => {
       { /* ConnectedRouter will use the store from Provider automatically */ }
       <ConnectedRouter history={history}>
         <div>
+          <Linkbar />
           <Route exact path="/" component={Home}/>
+          <Route exact path="/About" component={About} />
+          <Route exact path="/Contact" component={Contact} />
+          <Route exact path="/QualifiedPrograms" component={QualifiedPrograms} />
         </div>
       </ConnectedRouter>
     </Provider>
