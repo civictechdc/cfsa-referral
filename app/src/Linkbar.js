@@ -32,11 +32,11 @@ export default class Linkbar extends Component{
   render(){
     return (
       <Container>
-        <Navbar>
+        <Navbar color="faded" light toggleable>
           <NavbarToggler right onClick={this.toggleNavbar} />
           <Collapse className="navbar-toggleable-md" isOpen={!this.state.collapsed}>
             <NavbarBrand href="/">Home</NavbarBrand>
-            <Nav navbar>
+            <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink href="/About">About</NavLink>
               </NavItem>
