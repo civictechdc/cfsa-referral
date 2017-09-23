@@ -17,7 +17,7 @@ import data from './reducers/data';
 import eligiblePrograms from './reducers/eligiblePrograms';
 import 'bootstrap/dist/css/bootstrap.css';
 import logger from 'redux-logger';
-import ReduxThunk from 'redux-thunk'
+import thunk from 'redux-thunk'
 // Create a history of your choosing (we're using a browser history in this case)
 const history = createHistory()
 
