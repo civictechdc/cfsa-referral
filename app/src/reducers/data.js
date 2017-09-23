@@ -1,6 +1,6 @@
-//import initial from './data.json'
+import initial from '../data.json'
 
-function data(state = {}, action) {
+function data(state = initial, action) {
     switch(action.type) {
         default:
             return state;
