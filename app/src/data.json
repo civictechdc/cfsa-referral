@@ -2,11 +2,11 @@
     "questions":[
       {
         "id": 1,
-        "question": "CFSA_CASE_STATE",
+        "question": "Is there an open CFSA case?",
         "type": "boolean",
         "answer": {
-          "truekey": "TRUE",
-          "falsekey": "FALSE"
+          "truekey": "Yes",
+          "falsekey": "No"
         },
         "continueRules": {
           "false" : [2]
@@ -15,11 +15,11 @@
       },
       {
         "id": 2,
-        "question": "EMANCIPATED",
+        "question": "Is the child emancipated?",
         "type": "boolean",
         "answer": {
-          "truekey": "TRUE",
-          "falsekey": "FALSE"
+          "truekey": "Yes",
+          "falsekey": "No"
         },
         "continueRules": {
           "true": [3, 4]
@@ -28,11 +28,11 @@
       },
       {
         "id": 3,
-        "question": "AGE_18_23",
+        "question": "Is the parent between the ages 18 and 23?",
         "type": "boolean",
         "answer":{
-          "truekey": "TRUE",
-          "falsekey": "FALSE"
+          "truekey": "Yes",
+          "falsekey": "No"
         },
         "continueRules": {
           },
@@ -40,11 +40,11 @@
         },
         {
           "id": 4,
-          "question": "AGE_21_24",
+          "question": "Is the parent between the ages 21 and 24?",
           "type": "boolean",
           "answer":{
-            "truekey": "TRUE",
-            "falsekey": "FALSE"
+            "truekey": "Yes",
+            "falsekey": "No"
           },
           "continueRules": {
             "true": [5]
@@ -53,11 +53,11 @@
         },
         {
           "id":5,
-          "question": "SUBSTANCE_ABUSE",
+          "question": "Does the parent have substance abuse issues?",
           "type": "boolean",
           "answer":{
-            "truekey": "TRUE",
-            "falsekey": "FALSE"
+            "truekey": "Yes",
+            "falsekey": "No"
           },
           "continueRules": {
             "false": [6]
@@ -66,11 +66,11 @@
         },
         {
           "id":6,
-          "question": "ENROLLED_AFTERCARE",
+          "question": "Is the child enrolled in Aftercare?",
           "type": "boolean",
           "answer":{
-            "truekey": "TRUE",
-            "falsekey": "FALSE"
+            "truekey": "Yes",
+            "falsekey": "No"
           },
           "continueRules": {
           },
@@ -80,43 +80,28 @@
     "programs": [
       {
         "id": 1,
-        "program": "RAPID_FAM",
+        "program": "Rapid Housing (Family)",
         "questions": {
-          "1": true,
-          "2": true,
-          "3": true,
-          "4": true,
-          "5": true ,
-          "6": true 
+
         }
       },
       {
         "id": 2,
-        "program": "RAPID_YOUTH",
+        "program": "Rapid Housing (Youth)",
         "questions": {
-          "1": true,
-          "2": true,
-          "3": true,
-          "4": true,
-          "5": true ,
-          "6": true 
+
         }
       },
       {
         "id": 3,
-        "program": "TRANS_FAM",
+        "program": "Transistional Housing (Family)",
         "questions": {
-          "1": true,
-          "2": true,
-          "3": true,
-          "4": true,
-          "5": true ,
-          "6": true 
+
         }
       },
       {
         "id": 4,
-        "program": "TRANS_YOUTH",
+        "program": "Transitional Housing (Youth)",
         "questions": {
           "1": true,
           "2": true,
@@ -127,7 +112,7 @@
       },
       {
         "id": 5,
-        "program": "YOUTH_AFTER",
+        "program": "Youth Aftercare",
         "questions": {
           "1": true,
           "2": true,
