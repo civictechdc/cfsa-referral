@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Home from  './Home';
+
+import Polyglot from 'node-polyglot';
+
 import About from './About';
 import Contact from './Contact';
 import Linkbar from './Linkbar';
 import QualifiedPrograms from './QualifiedPrograms';
+
 
 import ReactDOM from 'react-dom'
 
