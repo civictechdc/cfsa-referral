@@ -4,26 +4,17 @@ import {
     Row,
     Col
 } from 'reactstrap';
-import Question from './components/Question.js'
 
-class Home extends React.Component {
-    render() {
-        return (
-            <Container>
-                <Row>   
-                    <Col>
-                        Go back
-                    </Col>
-                    <Col>
-                        <Question />
-                    </Col>
-                    <Col>
-                        Continue
-                    </Col>
-                </Row>
-            </Container>
-        )
-    }
+const Home = () => {
+    return (
+        <Container>
+            <Row>   
+                <Col>
+                    Home Page
+                </Col>
+            </Row>
+        </Container>
+    )
 }
 
 export default Home;
