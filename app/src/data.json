@@ -1,0 +1,112 @@
+{
+    questions:[
+      {
+        "id": 1,
+        "question": "CFSA_CASE_STATE",
+        "type": "boolean",
+        "answer": {
+          "truekey": "TRUE",
+          "falsekey": "FALSE",
+        },
+        "continueRules": {
+          "FALSE": [2]
+        },
+      },
+      {
+        "id": 2,
+        "question": "EMANCIPATED",
+        "type": "boolean",
+        "answer": {
+          "truekey": "TRUE",
+          "falsekey": "FALSE",
+        },
+        "continueRules": {
+          "TRUE": [3][4]
+        },
+      },
+      {
+        "id": 3,
+        "question": "AGE_18_23",
+        "type": "boolean",
+        "answer":{
+          "truekey": "TRUE",
+          "falsekey": "FALSE",
+        },
+        "continueRules": {
+            "TRUE": [programID 5],
+          },
+        },
+        {
+          "id": 4,
+          "question": "AGE_21_24",
+          "type": "boolean",
+          "answer":{
+            "truekey": "TRUE",
+            "falsekey": "FALSE",
+          },
+          "continueRules": {
+            "TRUE": [5]
+          },
+        },
+        {
+          "id":5,
+          "question": "SUBSTANCE_ABUSE",
+          "type": "boolean",
+          "answerKey":{
+            "truekey": "TRUE",
+            "falsekey": "FALSE",
+          },
+          "continueRules": {
+            "FALSE": [6]
+          },
+        },
+        {
+          "id":6,
+          "question": "ENROLLED_AFTERCARE",
+          "type": "boolean",
+          "answerKey":{
+            "truekey": "TRUE",
+            "falsekey": "FALSE",
+          },
+          "continueRules": {
+            "TRUE": [programID 4],
+          },
+        }
+      ],
+    programs: [
+      {
+        "programId": 1,
+        "program": "RAPID_FAM"
+      },
+      {
+        "programId": 2,
+        "program": "RAPID_YOUTH"
+      },
+      {
+        "programId": 3,
+        "program": "TRANS_FAM"
+      },
+      {
+        "programId": 4,
+        "program": "TRANS_YOUTH",
+        "questions": {
+          "1": false,
+          "2": true,
+          "3": N/A,
+          "4": true,
+          "5": false,
+          "6": true,
+        },
+      },
+      {
+        "programId": 5,
+        "program": "YOUTH_AFTER",
+        "questions": {
+          "1": false,
+          "2": true,
+          "3": true,
+        },
+      }
+    ]
+
+}
