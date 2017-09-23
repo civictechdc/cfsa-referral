@@ -8,6 +8,9 @@ const initialState = {
 
 function answers(state = initialState, action) {
     switch(action.type) {
+        case 'SELECT_ANSWER':
+            return {...state, [action.question]: [action.answer]}
+            break;
         default:
             return initialState;
     }
