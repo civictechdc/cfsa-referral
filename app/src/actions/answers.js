@@ -13,8 +13,8 @@ function selectAnswer(answer, question, nextQuestions) {
 export function selectedAnswer(thisAnswer, thisQuestion) {
       return (dispatch, getState) => {
             const state = getState();
-            const question = state.data.questions[thisQuestion];
-            const nextQuestions = question.continueRules[JSON.stringify(thisAnswer)] || [];
+            const question = state.data.questions.find(question=> question.id === thisQuestion);
+            const nextQuestions = question ? question.continueRules[JSON.stringify(thisAnswer)] || [] : [];
             dispatch(selectAnswer(thisAnswer, thisQuestion, nextQuestions));
       }  
 }

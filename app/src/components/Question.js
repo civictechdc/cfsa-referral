@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-    Container,
     Row,
     Col,
     Form,
@@ -12,7 +11,6 @@ import {
     CardTitle
 } from 'reactstrap';
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import * as AnswerActions from '../actions/answers'
 import translation from '../translation';
 
@@ -31,7 +29,7 @@ class Question extends React.Component {
     render() {
         return (
             <Row className="mt-2">   
-                <Col sm={{ size: 6, push: 2, pull: 2, offset: 1 }}>
+                <Col md={{ size: 8, push: 1, pull: 1, offset: 1 }} sm="12">
                     <Card className="text-center">
                         <CardBlock>
                             <CardTitle>{this.props.text}</CardTitle>

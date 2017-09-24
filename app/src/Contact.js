@@ -2,13 +2,7 @@ import React from 'react';
 import {
     Container,
     Row,
-    Col,
-    Navbar,
-    NavbarToggler,
-    Nav,
-    NavItem,
-    NavLink,
-    NavbarBrand
+    Col
 } from 'reactstrap';
 
 const Contact = () => {

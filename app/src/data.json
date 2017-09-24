@@ -9,7 +9,7 @@
           "falsekey": "No"
         },
         "continueRules": {
-          "false" : [2]
+          "true" : [2]
         },
         "start": true
       },
@@ -82,21 +82,33 @@
         "id": 1,
         "program": "Rapid Housing (Family)",
         "questions": {
-
+          "1": true,
+          "2": true,
+          "4": true,
+          "5": true,
+          "6": true
         }
       },
       {
         "id": 2,
         "program": "Rapid Housing (Youth)",
         "questions": {
-
+          "1": true,
+          "2": true,
+          "4": true,
+          "5": true,
+          "6": true
         }
       },
       {
         "id": 3,
         "program": "Transistional Housing (Family)",
         "questions": {
-
+          "1": true,
+          "2": true,
+          "4": true,
+          "5": true,
+          "6": true
         }
       },
       {

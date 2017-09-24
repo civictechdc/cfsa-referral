@@ -12,8 +12,6 @@ import Question from './components/Question'
 import {
     loadFirstQuestion
 } from './actions/answers';
-import { push } from 'react-router-redux'
-import QualifiedPrograms from './QualifiedPrograms';
 import translation from './translation'
 
 class Home extends Component {
@@ -24,12 +22,11 @@ class Home extends Component {
     }
 
     render() {
-        const { currentQuestion, dispatch } = this.props;
+        const { currentQuestion } = this.props;
         if(this.props.done) { 
             return <Redirect to="/QualifiedPrograms"/>
         }
 
-        console.log(translation);
         if(currentQuestion == null) {
             return <div>{translation.t('loading')}</div>
         }

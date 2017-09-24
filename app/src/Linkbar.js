@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {
     Container,
-    Row,
-    Col,
     Navbar,
     NavbarToggler,
     Nav,
@@ -11,7 +9,10 @@ import {
     NavbarBrand,
     Collapse
 } from 'reactstrap';
-
+import {
+  Link
+} from 'react-router-dom';
+import {setLanguage} from './translation';
 
 export default class Linkbar extends Component{
   constructor(props){
@@ -19,7 +20,7 @@ export default class Linkbar extends Component{
 
     this.toggleNavbar = this.toggleNavbar.bind(this);
     this.state = {
-      collapsed: false
+      collapsed: true
     };
   }
 
@@ -33,15 +34,31 @@ export default class Linkbar extends Component{
     return (
       <Container fluid={true}>
         <Navbar color="faded" light toggleable>
-          <NavbarBrand href="/">CFSA Referral Program</NavbarBrand>
+          <NavbarBrand>
+            <Link to="/">CFSA Referral Program</Link>
+          </NavbarBrand>
           <NavbarToggler right onClick={this.toggleNavbar} />
           <Collapse className="navbar-toggleable-md" isOpen={!this.state.collapsed} navbar>
             <Nav className="ml-auto" >
-              <NavItem>
-                <NavLink href="/About">About</NavLink>
+              <NavItem onClick={() => setLanguage('en')}>
+                <NavLink>
+                  English
+                </NavLink>
+              </NavItem>
+              <NavItem onClick={() => setLanguage('es')}>
+                <NavLink>
+                  Spanish
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/Contact">Contact</NavLink>
+                <NavLink>
+                  <Link to="/About">About</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink>
+                  <Link to="/Contact">Contact</Link>
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>

@@ -1,10 +1,27 @@
 import Polyglot from 'node-polyglot';
 
-var polyglot = new Polyglot();
+const polyglot = new Polyglot();
 
-const translation = polyglot.extend({
-  "hello": "Hello"
-});
+
+const en = {
+  "true": "Yes",
+  "false": "No",
+  "START_OVER": "Start Over"
+}
+
+const es = {
+  "true": "Si",
+  "false": "No",
+  "START_OVER": "Empieza"
+}
+
+polyglot.extend(en);
 // or
+
+export const setLanguage = (language) => {
+  polyglot.extend(language === 'en' ? en : es);
+}
+
+
 
 export default polyglot;

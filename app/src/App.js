@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import Home from  './Home';
 
-import Polyglot from 'node-polyglot';
 
 import About from './About';
 import Contact from './Contact';
@@ -11,7 +9,6 @@ import Linkbar from './Linkbar';
 import QualifiedPrograms from './QualifiedPrograms';
 
 
-import ReactDOM from 'react-dom'
 
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -19,7 +16,7 @@ import { Provider } from 'react-redux'
 import createHistory from 'history/createBrowserHistory'
 import { Route } from 'react-router'
 
-import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux'
 import answers from './reducers/answers';
 import data from './reducers/data';
 import eligiblePrograms from './reducers/eligiblePrograms';

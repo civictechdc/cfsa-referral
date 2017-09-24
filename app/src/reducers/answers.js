@@ -2,7 +2,10 @@ import {
     LOAD_FIRST_QUESTION,
     SELECT_ANSWER
 } from '../actions/answers';
-import {ADD_PROGRAM_ELIGIBILITY} from '../actions/eligibilityActions';
+import {
+    ADD_PROGRAM_ELIGIBILITY,
+    START_OVER_ELIGBILITY
+} from '../actions/eligibilityActions';
 
 
 const initialState = {
@@ -16,6 +19,13 @@ const initialState = {
 
 function answers(state = initialState, action) {
     switch(action.type) {
+        case START_OVER_ELIGBILITY:
+            return {
+                ...state,
+                done: false,
+                calculated: false,
+                responses: {}
+            }
         case SELECT_ANSWER: {
             const {answer, question, nextQuestions} = action;
             const allFutureQuestions = [...state.future, ...nextQuestions];
