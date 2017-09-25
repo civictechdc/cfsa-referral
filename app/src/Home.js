@@ -28,7 +28,7 @@ class Home extends Component {
         }
 
         if(currentQuestion == null) {
-            return <div>{translation.t('loading')}</div>
+            return <div>{translation.t('LOADING')}</div>
         }
         
 

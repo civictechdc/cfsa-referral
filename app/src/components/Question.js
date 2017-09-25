@@ -32,20 +32,20 @@ class Question extends React.Component {
                 <Col md={{ size: 8, push: 1, pull: 1, offset: 1 }} sm="12">
                     <Card className="text-center">
                         <CardBlock>
-                            <CardTitle>{this.props.text}</CardTitle>
+                            <CardTitle>{translation.t(this.props.text)}</CardTitle>
                         </CardBlock>
                         <Form className="mr-3">
                             <FormGroup tag="fieldset">
                                 <FormGroup check>
                                     <Label check>
                                     <Input type="radio" checked={this.props.currentResponse === true} name={this.props.current} onClick={() => this.answerQuestion(true)} />{' '}
-                                    {translation.t(this.props.answer.truekey)}
+                                    {translation.t(this.props.answer.trueKey)}
                                     </Label>
                                 </FormGroup>
                                 <FormGroup check>
                                     <Label check>
                                     <Input type="radio" checked={this.props.currentResponse === false} name={this.props.current} onClick={() => this.answerQuestion(false)} />{' '}
-                                    {translation.t(this.props.answer.falsekey)}
+                                    {translation.t(this.props.answer.falseKey)}
                                     </Label>
                                 </FormGroup>
                             </FormGroup>
