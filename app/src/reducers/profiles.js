@@ -5,20 +5,7 @@ import {
 const initialState = {
     currentProfile: null,
     profileSearch: '',
-    profiles: [
-        {
-            name: 'Test Person',
-        },
-        {
-            name: 'Test Person1',
-        },
-        {
-            name: 'Test Person11',
-        },
-        {
-            name: 'Test Person111',
-        },
-    ],
+    profiles: [],
 }
 
 
