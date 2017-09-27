@@ -8,7 +8,7 @@ import Contact from './Contact';
 import Linkbar from './Linkbar';
 import QualifiedPrograms from './QualifiedPrograms';
 
-
+import ProfileSearch from './containers/ProfileSearch';
 
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -53,6 +53,7 @@ const App = () => {
         <div>
           <Linkbar />
           <Route exact path="/" component={Home}/>
+          <Route exact path="/Profile" component={ProfileSearch} />
           <Route exact path="/About" component={About} />
           <Route exact path="/Contact" component={Contact} />
           <Route exact path="/QualifiedPrograms" component={QualifiedPrograms} />
