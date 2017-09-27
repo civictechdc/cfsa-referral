@@ -19,6 +19,7 @@ import { Route } from 'react-router'
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux'
 import answers from './reducers/answers';
 import data from './reducers/data';
+import profiles from './reducers/profiles';
 import eligiblePrograms from './reducers/eligiblePrograms';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -38,6 +39,7 @@ const store = createStore(
     answers,
     data,
     eligiblePrograms,
+    profiles,
     routing: routerReducer
   }),
   applyMiddleware(middleware, thunk, logger)
