@@ -2,14 +2,14 @@
     "questions": [
         {
             "id": 1,
-            "question": "OPEN_CFSA_CASE",
+            "question": "IS_THERE_A_CRISIS",
             "type": "boolean",
             "answer": {
-                "trueKey": "YES",
-                "falseKey": "NO"
+                "trueKey": "TRUE",
+                "falseKey": "FALSE"
             },
             "continueRules": {
-                "true": [
+                "false": [
                     2
                 ]
             },
@@ -17,90 +17,215 @@
         },
         {
             "id": 2,
-            "question": "IS_CHILD_EMANCIPATED",
+            "question": "RISK_OF_REMOVAL",
+            "category": "parenting",
             "type": "boolean",
             "answer": {
-                "trueKey": "YES",
-                "falseKey": "NO"
+                "trueKey": "TRUE",
+                "falseKey": "FALSE"
             },
             "continueRules": {
                 "true": [
-                    3,
+                    3
+                ],
+                "false": [
+                    8
+                ],
+                "comment": "if there's is no risk of removal, we skip asking substance abuse questions. Those questions assume risk of removal."
+            },
+            "start": false
+        },
+        {
+            "id": 3,
+            "question": "IN_HOME_CASE",
+            "category": "parenting",
+            "type": "boolean",
+            "answer": {
+                "trueKey": "TRUE",
+                "falseKey": "FALSE"
+            },
+            "continueRules": {
+                "true": [
+                    4
+                ],
+                "false": [
                     4
                 ]
             },
             "start": false
         },
         {
-            "id": 3,
-            "question": "BETWEEN_18_AND_23",
-            "type": "boolean",
-            "answer": {
-                "trueKey": "YES",
-                "falseKey": "NO"
-            },
-            "start": false
-        },
-        {
             "id": 4,
-            "question": "BETWEEN_21_AND_24",
+            "question": "SUBSTANCE_REASON_FOR_REMOVAL",
+            "category": "substanceAbuse",
             "type": "boolean",
             "answer": {
-                "trueKey": "YES",
-                "falseKey": "NO"
+                "trueKey": "TRUE",
+                "falseKey": "FALSE"
             },
             "continueRules": {
                 "true": [
                     5
+                ],
+                "false": [
+                    8
                 ]
             },
             "start": false
         },
         {
             "id": 5,
-            "question": "PARENT_SUBSTANCE_ABUSE",
+            "question": "CURRENT_USE_OR_RELAPSE",
+            "category": "substanceAbuse",
             "type": "boolean",
             "answer": {
-                "trueKey": "YES",
-                "falseKey": "NO"
+                "trueKey": "TRUE",
+                "falseKey": "FALSE"
             },
             "continueRules": {
-                "false": [
+                "true": [
                     6
+                ],
+                "false": [
+                    8
                 ]
             },
             "start": false
         },
         {
             "id": 6,
-            "question": "CHILD_IN_AFTERCARE",
+            "question": "SUBSTANCE_ABUSE_IMPACT_PARENTING",
+            "category": "substanceAbuse",
             "type": "boolean",
             "answer": {
-                "trueKey": "YES",
-                "falseKey": "NO"
+                "trueKey": "TRUE",
+                "falseKey": "FALSE"
+            },
+            "continueRules": {
+                "true": [
+                    7
+                ],
+                "false": [
+                    7
+                ]
+            },
+            "start": false
+        },
+        {
+            "id": 7,
+            "question": "SUBSTANCE_BARRIER_FOR_REUNIFICATION",
+            "category": "substanceAbuse",
+            "type": "boolean",
+            "answer": {
+                "trueKey": "TRUE",
+                "falseKey": "FALSE"
+            },
+            "continueRules": {
+                "true": [
+                    8
+                ],
+                "false": [
+                    8
+                ]
+            },
+            "start": false
+        },
+        {
+            "id": 8,
+            "question": "STABLE_INCOME",
+            "category": "housing",
+            "type": "boolean",
+            "answer": {
+                "trueKey": "TRUE",
+                "falseKey": "FALSE"
+            },
+            "continueRules": {
+                "true": [
+                    9
+                ],
+                "false": [
+                    9
+                ]
+            },
+            "start": false
+        },
+        {
+            "id": 9,
+            "question": "HOMELESS_OR_UNSTABLE_HOUSING",
+            "category": "housing",
+            "type": "boolean",
+            "answer": {
+                "trueKey": "TRUE",
+                "falseKey": "FALSE"
+            },
+            "continueRules": {
+                "true": [
+                    10
+                ],
+                "false": [
+                    10
+                ]
+            },
+            "start": false
+        },
+        {
+            "id": 10,
+            "question": "CASE_STATUS",
+            "category": "collaborative",
+            "type": "categorical",
+            "answer": {
+                "options": ["FRONT_YARD", "FRONT_PORCH", "FRONT_DOOR", "OTHER"]
+            },
+            "continueRules": {
             },
             "start": false
         }
     ],
     "programs": [
         {
-            "id": 4,
-            "program": "TRANSITIONAL_HOUSING",
+            "id": 1,
+            "program": "MSS",
             "questions": {
-                "1": true,
+                "1": true
+            }
+        },
+        {
+            "id": 2,
+            "program": "PESP",
+            "questions": {
                 "2": true,
+                "3": true
+            }
+        },
+        {
+            "id": 3,
+            "program": "PROJECT_CONNECT",
+            "questions": {
                 "4": true,
-                "5": false,
-                "6": true
+                "5": true
+            }
+        },
+        {
+            "id": 4,
+            "program": "RAPID_HOUSING",
+            "questions": {
+                "8": true,
+                "9": true
             }
         },
         {
             "id": 5,
-            "program": "YOUTH_AFTERCARE",
+            "program": "TRANSITIONAL_HOUSING",
             "questions": {
-                "1": true,
-                "2": true,
-                "3": true
+                "8": false,
+                "9": true
+            }
+        },
+        {
+            "id": 6,
+            "program": "COLLABORATIVE",
+            "questions": {
+                "10": ["FRONT_YARD", "FRONT_PORCH", "FRONT_DOOR"]
             }
         }
     ]

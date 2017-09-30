@@ -19,6 +19,7 @@ class Question extends React.Component {
     constructor(props) {
         super(props);
         this.answerQuestion = this.answerQuestion.bind(this);
+        this.questionForm = this.questionForm.bind(this);
     }
 
     answerQuestion(answer) {
@@ -26,6 +27,38 @@ class Question extends React.Component {
         dispatch(AnswerActions.selectedAnswer(answer, current))
     }
 
+    questionForm() {
+        // TODO: Change `type` to `questionType` to reduce confusion
+        if (this.props.type === 'boolean') {
+            return <FormGroup tag="fieldset">
+                <FormGroup check>
+                    <Label check>
+                    <Input type="radio" checked={this.props.currentResponse === true} name={this.props.current} onClick={() => this.answerQuestion(true)} />{' '}
+                    {translation.t(this.props.answer.trueKey)}
+                    </Label>
+                </FormGroup>
+                <FormGroup check>
+                    <Label check>
+                    <Input type="radio" checked={this.props.currentResponse === false} name={this.props.current} onClick={() => this.answerQuestion(false)} />{' '}
+                    {translation.t(this.props.answer.falseKey)}
+                    </Label>
+                </FormGroup>
+            </FormGroup>
+        } else if (this.props.type === 'categorical') {
+            return <FormGroup tag="fieldset">
+                {
+                    this.props.answer.options.map((answer) => {
+                        return <FormGroup key={answer + 'FormItem'} check>
+                            <Label check>
+                            <Input type="radio" checked={this.props.currentResponse === false} name={this.props.current} onClick={() => this.answerQuestion(answer)} />
+                            {' ' + translation.t(answer)}
+                            </Label>
+                        </FormGroup>
+                    })
+                }
+            </FormGroup>
+        }
+    }
     render() {
         return (
             <Row className="mt-2">   
@@ -35,20 +68,7 @@ class Question extends React.Component {
                             <CardTitle>{translation.t(this.props.text)}</CardTitle>
                         </CardBlock>
                         <Form className="mr-3">
-                            <FormGroup tag="fieldset">
-                                <FormGroup check>
-                                    <Label check>
-                                    <Input type="radio" checked={this.props.currentResponse === true} name={this.props.current} onClick={() => this.answerQuestion(true)} />{' '}
-                                    {translation.t(this.props.answer.trueKey)}
-                                    </Label>
-                                </FormGroup>
-                                <FormGroup check>
-                                    <Label check>
-                                    <Input type="radio" checked={this.props.currentResponse === false} name={this.props.current} onClick={() => this.answerQuestion(false)} />{' '}
-                                    {translation.t(this.props.answer.falseKey)}
-                                    </Label>
-                                </FormGroup>
-                            </FormGroup>
+                            {this.questionForm()}
                         </Form>
                     </Card>
                 </Col>
