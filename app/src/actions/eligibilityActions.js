@@ -38,7 +38,7 @@ function calculateProgramEligibity(requiredAnswers, responses, questions) {
         let isGoodAnswer;
         const question = questions.find(question => question.id.toString() === requiredAnswer.toString());
 
-        if (question.type === 'categorical') {
+        if (question.answerType === 'categorical') {
             // Answer can be one of a list
             isGoodAnswer = requiredAnswers[requiredAnswer].includes(responses[requiredAnswer]);
         } else {

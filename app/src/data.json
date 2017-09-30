@@ -3,7 +3,7 @@
         {
             "id": 1,
             "question": "IS_THERE_A_CRISIS",
-            "type": "boolean",
+            "answerType": "boolean",
             "answer": {
                 "trueKey": "TRUE",
                 "falseKey": "FALSE"
@@ -19,7 +19,7 @@
             "id": 2,
             "question": "RISK_OF_REMOVAL",
             "category": "parenting",
-            "type": "boolean",
+            "answerType": "boolean",
             "answer": {
                 "trueKey": "TRUE",
                 "falseKey": "FALSE"
@@ -39,7 +39,7 @@
             "id": 3,
             "question": "IN_HOME_CASE",
             "category": "parenting",
-            "type": "boolean",
+            "answerType": "boolean",
             "answer": {
                 "trueKey": "TRUE",
                 "falseKey": "FALSE"
@@ -58,7 +58,7 @@
             "id": 4,
             "question": "SUBSTANCE_REASON_FOR_REMOVAL",
             "category": "substanceAbuse",
-            "type": "boolean",
+            "answerType": "boolean",
             "answer": {
                 "trueKey": "TRUE",
                 "falseKey": "FALSE"
@@ -77,7 +77,7 @@
             "id": 5,
             "question": "CURRENT_USE_OR_RELAPSE",
             "category": "substanceAbuse",
-            "type": "boolean",
+            "answerType": "boolean",
             "answer": {
                 "trueKey": "TRUE",
                 "falseKey": "FALSE"
@@ -96,7 +96,7 @@
             "id": 6,
             "question": "SUBSTANCE_ABUSE_IMPACT_PARENTING",
             "category": "substanceAbuse",
-            "type": "boolean",
+            "answerType": "boolean",
             "answer": {
                 "trueKey": "TRUE",
                 "falseKey": "FALSE"
@@ -115,7 +115,7 @@
             "id": 7,
             "question": "SUBSTANCE_BARRIER_FOR_REUNIFICATION",
             "category": "substanceAbuse",
-            "type": "boolean",
+            "answerType": "boolean",
             "answer": {
                 "trueKey": "TRUE",
                 "falseKey": "FALSE"
@@ -134,7 +134,7 @@
             "id": 8,
             "question": "STABLE_INCOME",
             "category": "housing",
-            "type": "boolean",
+            "answerType": "boolean",
             "answer": {
                 "trueKey": "TRUE",
                 "falseKey": "FALSE"
@@ -153,7 +153,7 @@
             "id": 9,
             "question": "HOMELESS_OR_UNSTABLE_HOUSING",
             "category": "housing",
-            "type": "boolean",
+            "answerType": "boolean",
             "answer": {
                 "trueKey": "TRUE",
                 "falseKey": "FALSE"
@@ -172,7 +172,7 @@
             "id": 10,
             "question": "CASE_STATUS",
             "category": "collaborative",
-            "type": "categorical",
+            "answerType": "categorical",
             "answer": {
                 "options": ["FRONT_YARD", "FRONT_PORCH", "FRONT_DOOR", "OTHER"]
             },

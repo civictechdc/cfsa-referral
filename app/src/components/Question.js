@@ -28,8 +28,7 @@ class Question extends React.Component {
     }
 
     questionForm() {
-        // TODO: Change `type` to `questionType` to reduce confusion
-        if (this.props.type === 'boolean') {
+        if (this.props.answerType === 'boolean') {
             return <FormGroup tag="fieldset">
                 <FormGroup check>
                     <Label check>
@@ -44,7 +43,7 @@ class Question extends React.Component {
                     </Label>
                 </FormGroup>
             </FormGroup>
-        } else if (this.props.type === 'categorical') {
+        } else if (this.props.answerType === 'categorical') {
             return <FormGroup tag="fieldset">
                 {
                     this.props.answer.options.map((answer) => {
@@ -82,7 +81,7 @@ function mapStateToProps(state, props) {
 
   return {
       text: theQuestion.question,
-      type: theQuestion.type,
+      answerType: theQuestion.answerType,
       answer: theQuestion.answer,
       currentResponse: state.answers.responses[props.current]
   };
