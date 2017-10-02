@@ -17,7 +17,7 @@ This app was built with [Create React App](https://github.com/facebookincubator/
 $ git clone https://github.com/codefordc/cfsa-referral.git
 
 # Go into the repository
-$ cd cfsa-referral
+$ cd cfsa-referral/app
 
 # Install dependencies
 $ npm install
