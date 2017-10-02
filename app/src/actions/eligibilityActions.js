@@ -22,7 +22,7 @@ export function calculateProgramsEligibity(responses) {
         
         const eligiblePrograms = programs.reduce((eligiblePrograms, currentProgram) =>  {
             const requiredAnswers = currentProgram.questions;
-            const eligible = calculateProgramEligibity(requiredAnswers, responses)
+            const eligible = calculateProgramEligibity(requiredAnswers, responses, state.data.questions)
             if(eligible) {
                 return [...eligiblePrograms, currentProgram]
             }
@@ -33,9 +33,18 @@ export function calculateProgramsEligibity(responses) {
     }
 }
 
-function calculateProgramEligibity(requiredAnswers, responses) {
+function calculateProgramEligibity(requiredAnswers, responses, questions) {
     return Object.keys(requiredAnswers).reduce((isEligible, requiredAnswer) => {
-        return isEligible && !!responses[requiredAnswer] === requiredAnswers[requiredAnswer];
+        let isGoodAnswer;
+        const question = questions.find(question => question.id.toString() === requiredAnswer.toString());
+
+        if (question.answerType === 'categorical') {
+            // Answer can be one of a list
+            isGoodAnswer = requiredAnswers[requiredAnswer].includes(responses[requiredAnswer]);
+        } else {
+            isGoodAnswer = !!responses[requiredAnswer] === requiredAnswers[requiredAnswer];
+        }
+        return isEligible && isGoodAnswer;
     }, true);
 }
 

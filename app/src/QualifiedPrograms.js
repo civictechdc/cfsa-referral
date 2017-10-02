@@ -74,8 +74,8 @@ class QualifiedPrograms extends Component{
                                         const question = questions.find(question => question.id === parseInt(answer, 10));
                                         return(
                                                 <div key={question.id}>
-                                                    <h5>{question.question}</h5>
-                                                    <p>{translation.t(JSON.stringify(answers[answer]))}</p>
+                                                    <h5>{translation.t(question.question)}</h5>
+                                                    <p>{translation.t(answers[answer].toString().toUpperCase())}</p>
                                                 </div>
                                         );
                                     })
@@ -146,7 +146,7 @@ class QualifiedPrograms extends Component{
                         <ListGroup>
                         {
                             this.props.programs.map((program) => {
-                                return (<ListGroupItem key={program.id}>{program.program}</ListGroupItem>);
+                                return (<ListGroupItem key={program.id}>{translation.t(program.program)}</ListGroupItem>);
                             })
                         }
                         </ListGroup>
