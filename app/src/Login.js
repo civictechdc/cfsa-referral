@@ -22,8 +22,11 @@ const Login = props => {
     isPending,
     errorMessage,
     updateLoginForm,
-    login
+    login,
+    pathname
   } = props;
+  
+  const redirectPath = pathname === '/login' ? '/' : pathname;
 
   const onChange = e => {
     e.preventDefault();
@@ -32,7 +35,7 @@ const Login = props => {
 
   const onSubmit = e => {
     e.preventDefault();
-    login(userInput);
+    login(userInput, redirectPath);
   }
 
   const renderPending = () => (
@@ -96,8 +99,8 @@ const Login = props => {
 
 Login.propTypes = {
   userInput: PropTypes.string,
-  isAuthenticated: PropTypes.bool,
-  isPending: PropTypes.bool,
+  isAuthenticated: PropTypes.bool.isRequired,
+  isPending: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string
 }
 
@@ -105,7 +108,8 @@ const mapStateToProps = state => ({
   userInput: state.auth.userInput,
   isAuthenticated: state.auth.isAuthenticated,
   isPending: state.auth.isPending,
-  errorMessage: state.auth.errorMessage
+  errorMessage: state.auth.errorMessage,
+  pathname: state.routing.location.pathname
 });
 
 export default connect(mapStateToProps, actions)(Login);

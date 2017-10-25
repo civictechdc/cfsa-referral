@@ -7,6 +7,7 @@ import {
   REQUEST_PENDING,
   REQUEST_RESOLVED
 } from './authActionTypes';
+import history from '../history';
 
 const loginUser = () => ({
   type: USER_AUTH
@@ -38,7 +39,7 @@ export const updateLoginForm = payload => ({
   payload
 });
 
-export const login = userId => dispatch => {
+export const login = (userId, redirectPath) => dispatch => {
   //Simulated authorization process
   console.log('Pass userId rather than use getState', userId)
   dispatch(setRequestToPending());
@@ -48,7 +49,7 @@ export const login = userId => dispatch => {
   new Promise((resolve, reject) => {
     if(true) {
       const authorized = true;
-      setTimeout(() => resolve(authorized), 2000)
+      setTimeout(() => resolve(authorized), 1000)
     } else {
       const err = new Error('Whoops');
       reject(err);
@@ -57,6 +58,7 @@ export const login = userId => dispatch => {
   .then(isAuth => {
     if(isAuth) {
       dispatch(loginUser());
+      history.push(redirectPath);
     }
     dispatch(setRequestToResolved());
   })
