@@ -3,3 +3,16 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.navbar a {
+  cursor: pointer;
+}
+
+.navbar a.current {
+  cursor: default;
+  color: #888 !important;
+}
+
+.navbar a:hover {
+  color: #888 !important;
+}

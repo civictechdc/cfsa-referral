@@ -9,12 +9,10 @@ import {
     NavbarBrand,
     Collapse
 } from 'reactstrap';
-import {
-  Link
-} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import {setLanguage} from './translation';
 
-export default class Linkbar extends Component{
+class Linkbar extends Component{
   constructor(props){
     super(props);
 
@@ -30,12 +28,19 @@ export default class Linkbar extends Component{
     });
   }
 
+  navigate = destination => {
+    return {
+      onClick: () => this.props.history.push(destination),
+      className: this.props.location.pathname === destination ? "current" : ""
+    }
+  };
+
   render(){
     return (
       <Container fluid={true}>
         <Navbar color="faded" light toggleable>
-          <NavbarBrand>
-            <Link to="/">CFSA Referral Program</Link>
+          <NavbarBrand {...this.navigate("/")} >
+            CFSA Referral Program
           </NavbarBrand>
           <NavbarToggler right onClick={this.toggleNavbar} />
           <Collapse className="navbar-toggleable-md" isOpen={!this.state.collapsed} navbar>
@@ -51,13 +56,13 @@ export default class Linkbar extends Component{
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>
-                  <Link to="/About">About</Link>
+                <NavLink {...this.navigate("/About")}>
+                  About
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>
-                  <Link to="/Contact">Contact</Link>
+                <NavLink {...this.navigate("/Contact")}>
+                  Contact
                 </NavLink>
               </NavItem>
             </Nav>
@@ -67,3 +72,5 @@ export default class Linkbar extends Component{
     );
   }
 }
+
+export default withRouter(Linkbar)
