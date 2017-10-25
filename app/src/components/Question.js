@@ -11,10 +11,10 @@ import {
     CardTitle
 } from 'reactstrap';
 import { connect } from "react-redux";
-import * as AnswerActions from '../actions/answers'
-import translation from '../translation';
+import * as AnswerActions from 'actions/answers'
+import translation from 'translation';
 
-class Question extends React.Component {
+export class Question extends React.Component {
 
     constructor(props) {
         super(props);

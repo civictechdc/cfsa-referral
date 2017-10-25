@@ -1,11 +1,10 @@
 import React from 'react';
-import Home from  './Home';
-import Login from './Login';
-
-import About from './About';
-import Contact from './Contact';
-import Linkbar from './Linkbar';
-import QualifiedPrograms from './QualifiedPrograms';
+import Home from  'Home';
+import About from 'About';
+import Login from 'Login';
+import Contact from 'Contact';
+import Linkbar from 'Linkbar';
+import QualifiedPrograms from 'QualifiedPrograms';
 
 
 
@@ -16,10 +15,11 @@ import createHistory from 'history/createBrowserHistory'
 import { Route, Switch } from 'react-router'
 
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux'
-import answers from './reducers/answers';
-import auth from './reducers/auth';
-import data from './reducers/data';
-import eligiblePrograms from './reducers/eligiblePrograms';
+
+import answers from 'reducers/answers';
+import data from 'reducers/data';
+import auth from 'reducers/auth';
+import eligiblePrograms from 'reducers/eligiblePrograms';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import logger from 'redux-logger';
@@ -29,9 +29,8 @@ const history = createHistory()
 
 // Build the middleware for intercepting and dispatching navigation actions
 const middleware = routerMiddleware(history)
-
-
-
+// Build middleware implementation, including logger if not test or production
+const mWare = process.env.NODE_ENV === 'development' ?  applyMiddleware(middleware, thunk, logger) : applyMiddleware(middleware, thunk)
 // Add the reducer to your store on the `routing` key
 const store = createStore(
   combineReducers({
@@ -41,7 +40,7 @@ const store = createStore(
     eligiblePrograms,
     routing: routerReducer
   }),
-  applyMiddleware(middleware, thunk, logger)
+  mWare
 )
 
 const App = () => {
