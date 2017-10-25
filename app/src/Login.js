@@ -25,7 +25,7 @@ const Login = props => {
     login,
   } = props;
   
-  const redirectPath = props.location.state.from.pathname;
+  const redirectPath = props.location.state ? props.location.state.from.pathname : '/';
 
   const onChange = e => {
     e.preventDefault();
@@ -100,7 +100,8 @@ Login.propTypes = {
   userInput: PropTypes.string,
   isAuthenticated: PropTypes.bool.isRequired,
   isPending: PropTypes.bool.isRequired,
-  errorMessage: PropTypes.string
+  errorMessage: PropTypes.string,
+  login: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
