@@ -48,7 +48,7 @@ export const login = userId => dispatch => {
   new Promise((resolve, reject) => {
     if(true) {
       const authorized = true;
-      setTimeout(() => resolve(authorized), 10000)
+      setTimeout(() => resolve(authorized), 2000)
     } else {
       const err = new Error('Whoops');
       reject(err);
