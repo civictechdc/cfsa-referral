@@ -101,6 +101,7 @@ Login.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   isPending: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,
+  updateLoginForm: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired
 }
 
