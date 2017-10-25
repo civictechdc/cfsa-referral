@@ -23,10 +23,9 @@ const Login = props => {
     errorMessage,
     updateLoginForm,
     login,
-    pathname
   } = props;
   
-  const redirectPath = pathname === '/login' ? '/' : pathname;
+  const redirectPath = props.location.state.from.pathname;
 
   const onChange = e => {
     e.preventDefault();
@@ -108,8 +107,7 @@ const mapStateToProps = state => ({
   userInput: state.auth.userInput,
   isAuthenticated: state.auth.isAuthenticated,
   isPending: state.auth.isPending,
-  errorMessage: state.auth.errorMessage,
-  pathname: state.routing.location.pathname
+  errorMessage: state.auth.errorMessage
 });
 
 export default connect(mapStateToProps, actions)(Login);
