@@ -20,17 +20,19 @@ const Login = props => {
     userInput,
     isAuthenticated,
     isPending,
-    errorMessage
+    errorMessage,
+    updateLoginForm,
+    login
   } = props;
 
   const onChange = e => {
     e.preventDefault();
-    props.updateLoginForm(e.target.value);
+    updateLoginForm(e.target.value);
   };
 
   const onSubmit = e => {
     e.preventDefault();
-    props.login(userInput);
+    login(userInput);
   }
 
   const renderPending = () => (
