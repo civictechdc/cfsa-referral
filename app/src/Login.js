@@ -15,7 +15,7 @@ import './Login.css';
 import * as actions from './actions/authActions';
 import imgLogo from './images/cfsa-logo.jpg';
 
-const Login = props => {
+export const Login = props => {
   const {
     userInput,
     isAuthenticated,
