@@ -4,10 +4,13 @@ import {
     Navbar,
     NavbarToggler,
     Nav,
-    NavItem,
     NavLink,
     NavbarBrand,
-    Collapse
+    Collapse,
+    NavDropdown,
+    DropdownItem,
+    DropdownToggle,
+    DropdownMenu,
 } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import {setLanguage} from 'translation';
@@ -16,45 +19,47 @@ export default class Linkbar extends Component{
   constructor(props){
     super(props);
 
-    this.toggleNavbar = this.toggleNavbar.bind(this);
     this.state = {
-      collapsed: true
+      menuOpen: false,
+      languageOpen: false
     };
   }
 
-  toggleNavbar() {
-    this.setState({
-      collapsed: !this.state.collapsed
-    });
+  toggleOpen = element => () => {
+    element += 'Open'
+    this.setState({[element]: !this.state[element]});
   }
 
   render(){
     return (
       <Container fluid={true}>
         <Navbar color="faded" light toggleable>
-          <LinkContainer to="/">
+          <LinkContainer exact to="/">
             <NavbarBrand>CFSA Referral Program</NavbarBrand>
           </LinkContainer>
-          <NavbarToggler right onClick={this.toggleNavbar} />
-          <Collapse className="navbar-toggleable-md" isOpen={!this.state.collapsed} navbar>
-            <Nav className="ml-auto" >
-              <NavItem onClick={() => setLanguage('en')}>
-                <NavLink>
-                  English
-                </NavLink>
-              </NavItem>
-              <NavItem onClick={() => setLanguage('es')}>
-                <NavLink>
-                  Spanish
-                </NavLink>
-              </NavItem>
-                <LinkContainer to="/about">
-                  <NavLink>About</NavLink>
-                </LinkContainer>
-                <LinkContainer to="/contact">
-                  <NavLink>Contact</NavLink>
-                </LinkContainer>
-                </Nav>
+          <NavbarToggler right onClick={this.toggleOpen('menu')} />
+          <Collapse className="navbar-toggleable-md" isOpen={this.state.menuOpen} navbar>
+            <Nav navbar className="ml-auto">
+              <NavDropdown isOpen={this.state.languageOpen} toggle={this.toggleOpen('language')} >
+                <DropdownToggle nav caret>
+                  Language
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem onClick={() => setLanguage('en')}>
+                    English
+                  </DropdownItem>
+                  <DropdownItem onClick={() => setLanguage('es')}>
+                    Español
+                  </DropdownItem>
+                </DropdownMenu>
+              </NavDropdown>
+              <LinkContainer to="/about">
+                <NavLink>About</NavLink>
+              </LinkContainer>
+              <LinkContainer to="/contact">
+                <NavLink>Contact</NavLink>
+              </LinkContainer>
+            </Nav>
           </Collapse>
         </Navbar>
       </Container>
