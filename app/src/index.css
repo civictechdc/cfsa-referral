@@ -13,7 +13,3 @@ body {
   font-family: sans-serif;
 }
 
-.navbar a.active {
-  cursor: default;
-  color: #888 !important;
-}
