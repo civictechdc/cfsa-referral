@@ -32,14 +32,14 @@ export default class Linkbar extends Component{
     return (
       <Container fluid={true}>
         <Navbar color="faded" light toggleable>
-          <LinkContainer to="/">
+          <LinkContainer exact to="/">
             <NavbarBrand>CFSA Referral Program</NavbarBrand>
           </LinkContainer>
           <NavbarToggler right onClick={this.toggleNavbar} />
           <Collapse className="navbar-toggleable-md" isOpen={!this.state.collapsed} navbar>
             <Nav className="ml-auto" >
               <NavItem onClick={() => setLanguage('en')}>
-                <NavLink>
+                <NavLink >
                   English
                 </NavLink>
               </NavItem>
