@@ -22,8 +22,10 @@ export const Login = props => {
     isPending,
     errorMessage,
     updateLoginForm,
-    login
+    login,
   } = props;
+  
+  const redirectPath = props.location.state ? props.location.state.from.pathname : '/';
 
   const onChange = e => {
     e.preventDefault();
@@ -32,7 +34,7 @@ export const Login = props => {
 
   const onSubmit = e => {
     e.preventDefault();
-    login(userInput);
+    login(userInput, redirectPath);
   }
 
   const renderPending = () => (
@@ -96,9 +98,11 @@ export const Login = props => {
 
 Login.propTypes = {
   userInput: PropTypes.string,
-  isAuthenticated: PropTypes.bool,
-  isPending: PropTypes.bool,
-  errorMessage: PropTypes.string
+  isAuthenticated: PropTypes.bool.isRequired,
+  isPending: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string,
+  updateLoginForm: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
