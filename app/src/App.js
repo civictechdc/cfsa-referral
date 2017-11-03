@@ -11,7 +11,7 @@ import QualifiedPrograms from 'QualifiedPrograms';
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 
-import history from 'history';
+import history from './history';
 import createHistory from 'history/createBrowserHistory'
 import { Route, Switch, Redirect } from 'react-router';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux'
