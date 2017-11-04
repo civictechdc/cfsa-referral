@@ -9,13 +9,13 @@ function addProgramEligibility(eligiblePrograms) {
     }
 }
 
-export function startOverForEligbility() {
+export function startOverForEligibility() {
     return {
         type: START_OVER_ELIGBILITY
     }
 }
 
-export function calculateProgramsEligibity(responses) {
+export function calculateProgramsEligibility(responses) {
     return (dispatch, getState) => {
         const state = getState();
         const programs = state.data.programs;

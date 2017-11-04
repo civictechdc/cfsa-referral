@@ -9,6 +9,9 @@ The purpose of this project is to develop an app for case workers to use in the 
 ## Getting Started
 
 This app was built with [Create React App](https://github.com/facebookincubator/create-react-app)
+For testing framework please see [Jest](https://facebook.github.io/jest/)
+For more information on how the code works please reference the README found under the /app directory
+
 
 * First, [install node.js](https://nodejs.org/en/download/package-manager/), then:
 
@@ -20,10 +23,13 @@ $ git clone https://github.com/codefordc/cfsa-referral.git
 $ cd cfsa-referral/app
 
 # Install dependencies
-$ npm install
+$ yarn install
+
+# Run Tests
+$ yarn test
 
 # Run the app
-$ npm start
+$ yarn start
 ```
 
 For additional documentation, visit our [Google Docs project](https://docs.google.com/document/d/1jhy9-tHQS3dDEudcU8GbCemRszIN-64MXbvwNw-g5mM/edit).
@@ -33,6 +39,11 @@ Judy Yang,
 Michael Kalish,
 Aimee Barciauskas. 
 
+## Prototype 
+
+Hosted on Invision, comments and mark-ups are welcome
+
+https://invis.io/2AE4CENGY
 
 
 ## 9.23.17 Hackathon Activity
@@ -51,9 +62,7 @@ We focused on referrals for 6 CFSA programs with various focuses and eligibility
 
 Further details for each program is provided in the Google Docs project.
 
-
 ----------
-
 
 We created user flows and mockups using Balsamiq of the proposed app user interface and also worked on the decision tree app. The prototype was built using React and Javascript.
 The proposed app would function as follows: 

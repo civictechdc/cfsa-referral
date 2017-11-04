@@ -21,13 +21,13 @@ import {
 } from 'react-router-redux';
 
 import {
-    calculateProgramsEligibity,
-    startOverForEligbility
-} from './actions/eligibilityActions';
-import translation from './translation';
+    calculateProgramsEligibility,
+    startOverForEligibility
+} from 'actions/eligibilityActions';
+import translation from 'translation';
 
 
-class QualifiedPrograms extends Component{
+export class QualifiedPrograms extends Component{
 
     constructor(props){
         super(props);
@@ -36,12 +36,12 @@ class QualifiedPrograms extends Component{
 
     componentWillMount() {
         const {dispatch, answers} = this.props;
-        dispatch(calculateProgramsEligibity(answers));
+        dispatch(calculateProgramsEligibility(answers));
     }
 
     startOver() {
         const { dispatch } = this.props;
-        dispatch(startOverForEligbility());
+        dispatch(startOverForEligibility());
         dispatch(push('/'));
     }
 

@@ -11,10 +11,10 @@ import {
     CardTitle
 } from 'reactstrap';
 import { connect } from "react-redux";
-import * as AnswerActions from '../actions/answers'
-import translation from '../translation';
+import * as AnswerActions from 'actions/answers'
+import translation from 'translation';
 
-class Question extends React.Component {
+export class Question extends React.Component {
 
     constructor(props) {
         super(props);
@@ -29,30 +29,34 @@ class Question extends React.Component {
 
     questionForm() {
         if (this.props.answerType === 'boolean') {
-            return <FormGroup tag="fieldset">
-                <FormGroup check>
-                    <Label check>
-                    <Input type="radio" checked={this.props.currentResponse === true} name={this.props.current} onClick={() => this.answerQuestion(true)} />{' '}
-                    {translation.t(this.props.answer.trueKey)}
-                    </Label>
+            return (
+                <FormGroup tag="fieldset">
+                    <FormGroup check>
+                        <Label check>
+                        <Input type="radio" checked={this.props.currentResponse === true} name={this.props.current} onClick={() => this.answerQuestion(true)} />{' '}
+                        {translation.t(this.props.answer.trueKey)}
+                        </Label>
+                    </FormGroup>
+                    <FormGroup check>
+                        <Label check>
+                        <Input type="radio" checked={this.props.currentResponse === false} name={this.props.current} onClick={() => this.answerQuestion(false)} />{' '}
+                        {translation.t(this.props.answer.falseKey)}
+                        </Label>
+                    </FormGroup>
                 </FormGroup>
-                <FormGroup check>
-                    <Label check>
-                    <Input type="radio" checked={this.props.currentResponse === false} name={this.props.current} onClick={() => this.answerQuestion(false)} />{' '}
-                    {translation.t(this.props.answer.falseKey)}
-                    </Label>
-                </FormGroup>
-            </FormGroup>
+            )
         } else if (this.props.answerType === 'categorical') {
             return <FormGroup tag="fieldset">
                 {
                     this.props.answer.options.map((answer) => {
-                        return <FormGroup key={answer + 'FormItem'} check>
-                            <Label check>
-                            <Input type="radio" checked={this.props.currentResponse === false} name={this.props.current} onClick={() => this.answerQuestion(answer)} />
-                            {' ' + translation.t(answer)}
-                            </Label>
-                        </FormGroup>
+                        return (
+                            <FormGroup check key={answer}>
+                                <Label check>
+                                <Input type="radio" checked={this.props.currentResponse === false} name={this.props.current} onClick={() => this.answerQuestion(answer)} />
+                                {' ' + translation.t(answer)}
+                                </Label>
+                            </FormGroup>
+                        );
                     })
                 }
             </FormGroup>

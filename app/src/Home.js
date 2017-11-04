@@ -8,17 +8,16 @@ import {
     Redirect
 } from 'react-router';
 import {connect} from 'react-redux';
-import Question from './components/Question'
+import Question from 'components/Question'
 import {
     loadFirstQuestion
-} from './actions/answers';
-import translation from './translation'
+} from 'actions/answers';
+import translation from 'translation'
 
-class Home extends Component {
+export class Home extends Component {
 
     componentWillMount() {
-        const { dispatch } = this.props;
-        dispatch(loadFirstQuestion());
+        this.props.loadFirstQuestion()
     }
 
     render() {
@@ -30,7 +29,6 @@ class Home extends Component {
         if(currentQuestion == null) {
             return <div>{translation.t('LOADING')}</div>
         }
-        
 
         return (
             <Container>
@@ -54,7 +52,7 @@ class Home extends Component {
     
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
     return {
         currentQuestion: state.answers.current,
         previousQuestions: state.answers.previous,
@@ -63,4 +61,12 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loadFirstQuestion: () => {
+            dispatch(loadFirstQuestion())
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
