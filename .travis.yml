@@ -1,3 +1,4 @@
+language: node
 before_install: cd app
 install:
   - apt-get -y install yarn
