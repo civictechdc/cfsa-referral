@@ -1,0 +1,5 @@
+before_install: cd app
+install:
+  - apt-get -y install yarn
+  - yarn
+script: yarn test
