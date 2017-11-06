@@ -1,4 +1,5 @@
 # CFSA Referral Program
+[![Build Status](https://travis-ci.org/codefordc/cfsa-referral.svg?branch=master)](https://travis-ci.org/codefordc/cfsa-referral)
 
 The [DC Child and Family Services Agency (CFSA)](https://cfsa.dc.gov/page/about-cfsa) is the public child welfare agency in the District of Columbia responsible for protecting child victims and those at risk of abuse and neglect and assisting their families.
 
