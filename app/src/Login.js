@@ -42,7 +42,6 @@ export const Login = props => {
       <Row>
         <Col xs={4} />
         <Col xs={4}>
-          <h2>Logging in...</h2>
           <div className="pending-spinner" />
         </Col>
         <Col xs={4} />
