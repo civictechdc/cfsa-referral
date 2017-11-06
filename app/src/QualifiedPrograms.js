@@ -25,6 +25,9 @@ import {
     startOverForEligibility
 } from 'actions/eligibilityActions';
 import translation from 'translation';
+import {
+    CaseCard
+} from './cases/components'
 
 
 export class QualifiedPrograms extends Component{
@@ -62,6 +65,7 @@ export class QualifiedPrograms extends Component{
                 </Row>
             )
         }
+
         return (
             <Row className="mt-3">
                 <Col>
@@ -91,58 +95,74 @@ export class QualifiedPrograms extends Component{
     render(){
         if(!this.props.calculated) {
             return (
-                <Container>
-                    <Row className="mt-3">   
-                        <Col md={{ size: 8, push: 1, pull: 1, offset: 1 }} sm="12" className="text-center">
-                            <Card>
-                                <CardBlock>
-                                    <CardText>{translation.t('CALCULATING_ELIGIBILITY')}</CardText>
-                                </CardBlock>
-                            </Card>
-                        </Col>
-                    </Row>
-                    {this.renderAnswers()}
-                    <Row className="mt-3">
-                        <Col sm={{ size: 3, offset: 4 }}>
-                            <Button outline color="primary">{translation.t('START_OVER')}</Button>
-                        </Col>
-                    </Row>
-                </Container>
+                <Row>
+                    <Col>
+                        <Row>
+                            <Col className="mt-2">
+                                <CaseCard {...this.props.person} {...this.props.selectedCase} ></CaseCard>
+                            </Col>
+                        </Row>
+                        <Row className="mt-3">   
+                            <Col md={{ size: 8, push: 1, pull: 1, offset: 1 }} sm="12" className="text-center">
+                                <Card>
+                                    <CardBlock>
+                                        <CardText>{translation.t('CALCULATING_ELIGIBILITY')}</CardText>
+                                    </CardBlock>
+                                </Card>
+                            </Col>
+                        </Row>
+                        {this.renderAnswers()}
+                        <Row className="mt-3">
+                            <Col sm={{ size: 3, offset: 4 }}>
+                                <Button outline color="primary">{translation.t('START_OVER')}</Button>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
             );
         }
 
         if(this.props.programs.length === 0) {
             return (
-                <Container>
-                    <Row className="mt-3">   
-                        <Col md={{ size: 8, push: 1, pull: 1, offset: 1 }} sm="12" className="text-center">
-                            <Card>
-                                <CardBlock>
-                                    <CardTitle>Sorry, the family/individual is not eligible for any programs at this time</CardTitle>
-                                    <CardText>As the situtation changes, please make sure to consult this tool again.</CardText>
-                                </CardBlock>
-                            </Card>
-                        </Col>
-                    </Row>
-                    {this.renderAnswers()}
-                    <Row className="mt-3">
-                        <Col sm={{ size: 3, offset: 4 }}>
-                            <Button onClick={this.startOver} outline color="primary">{translation.t('START_OVER')}</Button>
-                        </Col>
-                    </Row>
-                </Container>
+                <Row>
+                    <Col>
+                        <Row>
+                            <Col className="mt-2">
+                                <CaseCard {...this.props.person} {...this.props.selectedCase} ></CaseCard>
+                            </Col>
+                        </Row>
+                        <Row className="mt-3">   
+                            <Col md={{ size: 8, push: 1, pull: 1, offset: 1 }} sm="12" className="text-center">
+                                <Card>
+                                    <CardBlock>
+                                        <CardTitle>Sorry, the family/individual is not eligible for any programs at this time</CardTitle>
+                                        <CardText>As the situtation changes, please make sure to consult this tool again.</CardText>
+                                    </CardBlock>
+                                </Card>
+                            </Col>
+                        </Row>
+                        {this.renderAnswers()}
+                        <Row className="mt-3">
+                            <Col sm={{ size: 3, offset: 4 }}>
+                                <Button onClick={this.startOver} outline color="primary">{translation.t('START_OVER')}</Button>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
             )
         }
 
         return (
-            <Container>
-                <Row>   
-                    <Col md={{ size: 8, push: 1, pull: 1, offset: 1 }} sm="12" className="text-center">
-                       <h3>Programs the individual/family are eligible for: </h3>
-                    </Col>
-                </Row>
+            <Row>
+            <Col>
+                <Row>
+                        <Col className="mt-2">
+                            <CaseCard {...this.props.person} {...this.props.selectedCase} ></CaseCard>
+                        </Col>
+                    </Row>
                 <Row>
                     <Col sm={{ size: 8, push: 1, pull: 1, offset: 1 }}>
+                        <h5>{translation.t('QUALIFIED_PROGRAMS_FOR_CASE')}</h5>
                         <ListGroup>
                         {
                             this.props.programs.map((program) => {
@@ -158,17 +178,26 @@ export class QualifiedPrograms extends Component{
                         <Button onClick={this.startOver} outline color="primary">{translation.t('START_OVER')}</Button>
                     </Col>
                 </Row>
-            </Container>
+                </Col>
+                </Row>
         )
     }
 }
 
 function mapStateToProps(state) {
+    const personAndCases = state.cases.data.find((person) => {
+        return person.cases.find((c) => {
+            return c.id === state.cases.ui.selectedCase;
+        });
+    });
+
     return {
         answers: state.answers.responses,
         questions: state.data.questions,
         programs: state.eligiblePrograms,
-        calculated: state.answers.calculated
+        calculated: state.answers.calculated,
+        selectedCase: personAndCases.cases.find((c) => c.id === state.cases.ui.selectedCase),
+        person: personAndCases   
     }
 }
 

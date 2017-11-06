@@ -1,6 +1,13 @@
-import initial from '../data.json'
+import initial from '../data.json';
+import cases from '../case.json';
 
-function data(state = initial, action) {
+
+const mockData = {
+    ...initial,
+    cases
+};
+
+function data(state = mockData, action) {
     switch(action.type) {
         default:
             return state;

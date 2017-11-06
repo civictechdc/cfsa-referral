@@ -13,6 +13,9 @@ import {
     loadFirstQuestion
 } from 'actions/answers';
 import translation from 'translation'
+import {
+    CaseCard
+} from './cases/components'
 
 export class Home extends Component {
 
@@ -23,7 +26,7 @@ export class Home extends Component {
     render() {
         const { currentQuestion } = this.props;
         if(this.props.done) { 
-            return <Redirect to="/QualifiedPrograms"/>
+            return <Redirect to={`/qualifiedPrograms/${this.props.selectedCase.id}`}/>
         }
 
         if(currentQuestion == null) {
@@ -33,12 +36,8 @@ export class Home extends Component {
         return (
             <Container>
                 <Row>
-                    <Col className="text-center mt-2">
-                        <p>
-                            Welcome to the CFSA Referral Program!  Please start filling out the questions in 
-                            order to get some recommendations for potential programs to refer the family or
-                            individual to.
-                        </p>
+                    <Col className="mt-2">
+                       <CaseCard {...this.props.person} {...this.props.selectedCase} ></CaseCard>
                     </Col>
                 </Row>
                 <Row>   
@@ -53,11 +52,19 @@ export class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
+    const personAndCases = state.cases.data.find((person) => {
+        return person.cases.find((c) => {
+            return c.id === state.cases.ui.selectedCase;
+        });
+    });
+
     return {
         currentQuestion: state.answers.current,
         previousQuestions: state.answers.previous,
         futureQuestions: state.answers.future,
         done: state.answers.done,
+        selectedCase: personAndCases.cases.find((c) => c.id === state.cases.ui.selectedCase),
+        person: personAndCases
     }
 }
 
