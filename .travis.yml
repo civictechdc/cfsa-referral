@@ -1,6 +1,6 @@
 language: node
 before_install: cd app
 install:
-  - apt-get -y install yarn
+  - sudo apt-get install yarn -qq
   - yarn
 script: yarn test
