@@ -77,6 +77,7 @@ polyglot.extend(en);
 
 export const setLanguage = (language) => {
   polyglot.extend(language === 'en' ? en : es);
+  window.location.reload();
 }
 
 
