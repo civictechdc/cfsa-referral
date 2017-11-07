@@ -18,7 +18,7 @@ import { push } from 'react-router-redux';
 const Cases = ({results, selectedCase, handleSelect, handleBack, handleContinue }) => {
     const renderResults = () => {
         if(results.length) {
-            results.map((person) => {
+            return results.map((person) => {
                 return person.cases.map((individualCase) => {
                     return (
                         <CaseCard 
