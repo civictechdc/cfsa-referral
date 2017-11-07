@@ -13,7 +13,7 @@ const en = {
   "START_OVER": "Start Over",
   "SUBMITTED_ANSWERS": "Submitted Answers",
   "NO_ANSWERS_SUBMITTED": "No answers had been submitted",
-  "CALCULATING_ELIGIBILITY": "Please wiat while we calculate the eligible programs",
+  "CALCULATING_ELIGIBILITY": "Please wait while we calculate the eligible programs",
   // QUESTIONS
   "IS_THERE_A_CRISIS": "Is there a crisis?",
   // Parenting
@@ -39,7 +39,31 @@ const en = {
   "TRANSITIONAL_HOUSING": "Transitional Housing",
   "COLLABORATIVE": "Collaborative",
   "MSS": "Mobile Stabilization Services",
-  "LOADING": "Loading..."
+  "LOADING": "Loading...",
+  // Search for Case
+  "OPEN_CASE_HEADER": "Open Case",
+  "SEARCH_HELP_TEXT": "Search for your case by entering family name and Date of Birth.",
+  "LAST_NAME_INPUT": "Last Name",
+  "LAST_NAME_HELP": "Type any letter in the last name",
+  "DATE_OF_BIRTH_INPUT": "Date of Birth",
+  "DOB_HELP": "Enter in MM/DD/YYYY format",
+  "SUBMIT_SEARCH_BUTTON": "Search",
+  // Cases Search Results
+  "CASES_SEARCH_RESULTS": "Matching Cases",
+  "BACK_TO_SEARCH": "Back to Search",
+  "SELECT_CASE": "Select Case",
+  // Case View
+  "SOCIAL_WORKER_ID": "Social Worker ID",
+  "SUPERVISOR_ID": "Supervisor ID",
+  "REFERRAL_ID": "Referral ID",
+  "REFERRAL_DATE": "Referral Date",
+  "BACK_TO_SEARCH_RESULTS": "Back to Search Results",
+  "SEE_CASE_FLAGS": "See Case Flags",
+  "BACK_TO_CASE": "Back to Case",
+  "GO_TO_QUESTIONS": "Go to Questions",
+  "QUALIFIED_PROGRAMS_FOR_CASE": "Qualified Programs For Case"
+
+
 }
 
 const es = {

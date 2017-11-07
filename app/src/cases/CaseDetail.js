@@ -28,7 +28,7 @@ const CaseDetail = ({ selectedCase, person, handleBackToResults, handleSeeFlags 
                         <p>{selectedCase.socialWorkerId}</p>
                     </Col>
                     <Col xs="12">
-                        <p className="text-muted">{translation.t('SUPERVIOSR_ID')}</p>
+                        <p className="text-muted">{translation.t('SUPERVISOR_ID')}</p>
                         <p>{selectedCase.supervisorId}</p>
                     </Col>
                     <Col xs="12">
@@ -59,10 +59,10 @@ class CaseDetailContainer extends React.Component {
     render() {
         const { dispatch, selectedCase } = this.props;
         return (
-            <CaseDetail 
+            <CaseDetail
                 handleBackToResults={() => dispatch(push('/cases'))}
                 handleSeeFlags={() => dispatch(push(`/flags/${selectedCase.id}`))}
-                {...this.props} 
+                {...this.props}
             />
         );
     }
