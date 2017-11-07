@@ -16,17 +16,35 @@ import {
 import { push } from 'react-router-redux';
 
 const Cases = ({results, selectedCase, handleSelect, handleBack, handleContinue }) => {
+    const renderResults = () => {
+        if(results.length) {
+            results.map((person) => {
+                return person.cases.map((individualCase) => {
+                    return (
+                        <CaseCard 
+                            handleSelect={handleSelect} 
+                            isSelected={selectedCase === individualCase.id} 
+                            {...person}  
+                            {...individualCase} 
+                        />
+                    )
+                });
+            })
+        }
+        else {
+            return (
+                <p>No results found...</p>
+            )
+        }
+    }
+
     return(
         <Row>
             <Col>
                 <h4>{translation.t('CASES_SEARCH_RESULTS')}</h4>
                 <Row>
                     <Col>
-                    {results.map((person) => {
-                        return person.cases.map((individualCase) => {
-                            return <CaseCard handleSelect={handleSelect} isSelected={selectedCase === individualCase.id} {...person}  {...individualCase} />
-                        });
-                    })}
+                        {renderResults()}
                     </Col>
                 </Row>
                 <Row>
