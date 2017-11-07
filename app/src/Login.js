@@ -25,7 +25,7 @@ export const Login = props => {
     login,
   } = props;
   
-  const redirectPath = props.location.state ? props.location.state.from.pathname : '/';
+  const redirectPath = '/';
 
   const onChange = e => {
     e.preventDefault();

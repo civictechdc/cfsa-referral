@@ -16,17 +16,35 @@ import {
 import { push } from 'react-router-redux';
 
 const Cases = ({results, selectedCase, handleSelect, handleBack, handleContinue }) => {
+    const renderResults = () => {
+        if(results.length) {
+            return results.map((person) => {
+                return person.cases.map((individualCase) => {
+                    return (
+                        <CaseCard 
+                            handleSelect={handleSelect} 
+                            isSelected={selectedCase === individualCase.id} 
+                            {...person}  
+                            {...individualCase} 
+                        />
+                    )
+                });
+            })
+        }
+        else {
+            return (
+                <p>No results found...</p>
+            )
+        }
+    }
+
     return(
         <Row>
             <Col>
                 <h4>{translation.t('CASES_SEARCH_RESULTS')}</h4>
                 <Row>
                     <Col>
-                    {results.map((person) => {
-                        return person.cases.map((individualCase) => {
-                            return <CaseCard handleSelect={handleSelect} isSelected={selectedCase === individualCase.id} {...person}  {...individualCase} />
-                        });
-                    })}
+                        {renderResults()}
                     </Col>
                 </Row>
                 <Row>
@@ -34,7 +52,14 @@ const Cases = ({results, selectedCase, handleSelect, handleBack, handleContinue 
                         <Button onClick={handleBack} color="danger" size="sm" >{translation.t('BACK_TO_SEARCH')}</Button>
                     </Col>
                     <Col xs="6" className="align-self-end">
-                        <Button onClick={handleContinue} color="danger" size="sm" >{translation.t('SELECT_CASE')}</Button>
+                        <Button 
+                            disabled={!selectedCase ? true : false}
+                            onClick={selectedCase ? handleContinue : null} 
+                            color="danger" 
+                            size="sm"
+                        >
+                            {translation.t('SELECT_CASE')}
+                        </Button>
                     </Col>
                 </Row>
             </Col>
