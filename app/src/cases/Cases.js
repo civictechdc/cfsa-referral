@@ -34,7 +34,14 @@ const Cases = ({results, selectedCase, handleSelect, handleBack, handleContinue 
                         <Button onClick={handleBack} color="danger" size="sm" >{translation.t('BACK_TO_SEARCH')}</Button>
                     </Col>
                     <Col xs="6" className="align-self-end">
-                        <Button onClick={handleContinue} color="danger" size="sm" >{translation.t('SELECT_CASE')}</Button>
+                        <Button 
+                            disabled={!selectedCase ? true : false}
+                            onClick={selectedCase ? handleContinue : null} 
+                            color="danger" 
+                            size="sm"
+                        >
+                            {translation.t('SELECT_CASE')}
+                        </Button>
                     </Col>
                 </Row>
             </Col>
