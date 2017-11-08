@@ -83,9 +83,9 @@ const es = {
 polyglot.extend(en);
 // or
 
-export const setLanguage = (language, currentPath) => {
+export const setLanguage = (language, history) => {
   polyglot.extend(language === 'en' ? en : es);
-  currentPath.push(currentPath.location.pathname);
+  history.push(history.location.pathname);
 }
 
 
