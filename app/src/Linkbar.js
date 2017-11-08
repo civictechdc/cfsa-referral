@@ -32,7 +32,7 @@ export default class Linkbar extends Component{
   }
 
   render(){
-    let {history} = this.props;
+    const {history} = this.props;
     return (
       <Container fluid={true}>
         <Navbar color="faded" light toggleable>
