@@ -14,6 +14,7 @@ import {
 } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import {setLanguage} from 'translation';
+import translation from 'translation';
 
 export default class Linkbar extends Component{
   constructor(props){
@@ -31,6 +32,7 @@ export default class Linkbar extends Component{
   }
 
   render(){
+    const {history} = this.props;
     return (
       <Container fluid={true}>
         <Navbar color="faded" light toggleable>
@@ -42,22 +44,22 @@ export default class Linkbar extends Component{
             <Nav navbar className="ml-auto">
               <NavDropdown isOpen={this.state.languageOpen} toggle={this.toggleOpen('language')} >
                 <DropdownToggle nav caret>
-                  Language
+                  {translation.t('LANGUAGE')}
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem onClick={() => setLanguage('en')}>
+                  <DropdownItem onClick={() => setLanguage('en', history)}>
                     English
                   </DropdownItem>
-                  <DropdownItem onClick={() => setLanguage('es')}>
+                  <DropdownItem onClick={() => setLanguage('es', history)}>
                     Español
                   </DropdownItem>
                 </DropdownMenu>
               </NavDropdown>
               <LinkContainer to="/about">
-                <NavLink>About</NavLink>
+                <NavLink>{translation.t('ABOUT')}</NavLink>
               </LinkContainer>
               <LinkContainer to="/contact">
-                <NavLink>Contact</NavLink>
+                <NavLink>{translation.t('CONTACT')}</NavLink>
               </LinkContainer>
             </Nav>
           </Collapse>

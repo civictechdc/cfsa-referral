@@ -5,6 +5,10 @@ const polyglot = new Polyglot();
 
 const en = {
   "TRUE": "Yes",
+  "ABOUT": "About",
+  "CONTACT": "Contact",
+  "LOGIN": "LOGIN",
+  "LANGUAGE": "LANGUAGE",
   "FALSE": "No",
   "FRONT_YARD": "FrontYard",
   "FRONT_PORCH": "FrontPorch",
@@ -67,16 +71,21 @@ const en = {
 }
 
 const es = {
+  "LANGUAGE": "IDIOMA",
+  "ABOUT": "acerca de",
+  "CONTACT": "contacto",
   "true": "Si",
   "false": "No",
-  "START_OVER": "Empieza"
+  "START_OVER": "Empieza",
+  "LOGIN": "iniciar sesión"
 }
 
 polyglot.extend(en);
 // or
 
-export const setLanguage = (language) => {
+export const setLanguage = (language, history) => {
   polyglot.extend(language === 'en' ? en : es);
+  history.push(history.location.pathname);
 }
 
 

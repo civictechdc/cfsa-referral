@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import translation from 'translation';
 import { connect } from 'react-redux';
 import {
   Container,
@@ -75,16 +76,16 @@ export const Login = props => {
           <Form onSubmit={onSubmit}>
             <FormGroup>
             <Label for="userId">Enter Your ID</Label>
-            <Input 
-              type="password" 
-              name="userId" 
-              id="userId" 
+            <Input
+              type="password"
+              name="userId"
+              id="userId"
               placeholder="eg. 07734..."
               value={userInput}
               onChange={onChange}
             />
             </FormGroup>
-          <Button color="danger">Login</Button>
+          <Button color="danger">{translation.t('LOGIN')}</Button>
           </Form>
         </Col>
         <Col xs={1} md={2} />

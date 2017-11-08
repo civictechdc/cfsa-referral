@@ -58,7 +58,7 @@ const App = () => {
       { /* ConnectedRouter will use the store from Provider automatically */ }
       <ConnectedRouter history={history}>
         <div>
-          <Linkbar />
+          <Linkbar history={history}/>
           <Container>
             <Switch>
               <PrivateRoute exact path="/" component={SearchCases}/>
