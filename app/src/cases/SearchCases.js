@@ -21,8 +21,6 @@ const validate = values => {
   const errors = {}
   if (!values.lastName) {
     errors.lastName = 'Required'
-  } else if (values.lastName.length > 15) {
-    errors.lastName = 'Must be 15 characters or less'
   }
   return errors
 }
