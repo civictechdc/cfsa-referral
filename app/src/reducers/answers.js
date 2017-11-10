@@ -1,5 +1,6 @@
 import {
     LOAD_FIRST_QUESTION,
+    LOAD_PREVIOUS_QUESTION,
     SELECT_ANSWER
 } from '../actions/answers';
 import {
@@ -44,7 +45,12 @@ function answers(state = initialState, action) {
                     [question]: answer}
                 }
             }
-        case ADD_PROGRAM_ELIGIBILITY: 
+        case LOAD_PREVIOUS_QUESTION:
+          return {
+            ...state,
+            current: action.prevQuestion.id
+          }
+        case ADD_PROGRAM_ELIGIBILITY:
             return {
                 ...state,
                 calculated: true
