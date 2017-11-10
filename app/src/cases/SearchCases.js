@@ -17,11 +17,31 @@ import {
 } from './actions';
 import { push } from 'react-router-redux';
 
-const InputField = (props) => {
-    return (
-        <Input type={props.type} {...props.input} />
-    )
+const validate = values => {
+  const errors = {}
+  if (!values.lastName) {
+    errors.lastName = 'Required'
+  } else if (values.lastName.length > 15) {
+    errors.lastName = 'Must be 15 characters or less'
+  }
+  return errors
 }
+
+const renderField = ({
+  input,
+  label,
+  type,
+  meta: { touched, error }
+}) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} placeholder={label} type={type} />
+      {touched &&
+        ((error && <span>{error}</span>))}
+    </div>
+  </div>
+)
 
 const SearchCases = ({handleSubmit, onSubmit}) => {
     return (
@@ -33,8 +53,12 @@ const SearchCases = ({handleSubmit, onSubmit}) => {
                         {translation.t('SEARCH_HELP_TEXT')}
                     </legend>
                     <FormGroup className="mb-3">
-                        <Label htmlFor="lastName">{translation.t('LAST_NAME_INPUT')}</Label>
-                        <Field name="lastName" component={InputField} type="text" />
+                        <Field
+        name="lastName"
+        type="text"
+        component={renderField}
+        label={translation.t('LAST_NAME_INPUT')}
+      />
                         <FormText color="muted">{translation.t('LAST_NAME_HELP')}</FormText>
                     </FormGroup>
                     <FormGroup>
@@ -64,7 +88,8 @@ class SearchCasesContainer extends React.Component {
 
     render() {
         return (
-            <SearchCases {...this.props} onSubmit={this.handleSearchSubmit} />
+            <SearchCases {...this.props}
+            onSubmit={this.handleSearchSubmit} />
         )
     }
 }
@@ -72,5 +97,6 @@ class SearchCasesContainer extends React.Component {
 
 export default reduxForm({
   // a unique name for the form
-  form: 'search'
+  form: 'search',
+  validate
 })(SearchCasesContainer);
