@@ -43,6 +43,13 @@ const renderField = ({
   </div>
 )
 
+const InputField = (props) => {
+  console.log(props)
+    return (
+        <Input type={props.type} {...props.input} />
+    )
+}
+
 const SearchCases = ({handleSubmit, onSubmit}) => {
     return (
         <Row>
@@ -69,7 +76,7 @@ const SearchCases = ({handleSubmit, onSubmit}) => {
                     <Button className="mb-3" color="danger" size="sm" >{translation.t('SUBMIT_SEARCH_BUTTON')}</Button>
                 </Form>
             </Col>
-        </Row> 
+        </Row>
     )
 }
 
