@@ -8,7 +8,7 @@ import {
     Redirect
 } from 'react-router';
 import {connect} from 'react-redux';
-import Question from 'components/Question'
+import Question from 'components/Question';
 import {
     loadFirstQuestion
 } from 'actions/answers';
@@ -19,19 +19,12 @@ import {
 
 export class Home extends Component {
 
-  componentWillMount() {
-    console.log("HOME")
-    console.log('componentWillMount')
-    console.log(this.props);
-  }
-
     componentWillMount() {
         this.props.loadFirstQuestion()
     }
 
     render() {
-      console.log(this.props);
-        const { currentQuestion, location } = this.props;
+        const { currentQuestion } = this.props;
         if(this.props.done) {
             return <Redirect to={`/qualifiedPrograms/${this.props.selectedCase.id}`}/>
         }
@@ -49,7 +42,7 @@ export class Home extends Component {
                 </Row>
                 <Row>
                     <Col>
-                        <Question current={currentQuestion} location={location} selectedCase={this.props.selectedCase.id}/>
+                        <Question current={currentQuestion}/>
                     </Col>
                 </Row>
             </Container>

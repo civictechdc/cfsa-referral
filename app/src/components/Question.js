@@ -33,10 +33,8 @@ export class Question extends React.Component {
     }
 
     answerQuestion(answer) {
-
         const { dispatch, current } = this.props;
         dispatch(AnswerActions.selectedAnswer(answer, current));
-        // dispatch(push(`/questions/${this.props.selectedCase}/${this.props.current+1}`))
     }
 
     loadPreviousQuestion() {
