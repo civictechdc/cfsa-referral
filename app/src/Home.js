@@ -19,13 +19,20 @@ import {
 
 export class Home extends Component {
 
+  componentWillMount() {
+    console.log("HOME")
+    console.log('componentWillMount')
+    console.log(this.props);
+  }
+
     componentWillMount() {
         this.props.loadFirstQuestion()
     }
 
     render() {
-        const { currentQuestion } = this.props;
-        if(this.props.done) { 
+      console.log(this.props);
+        const { currentQuestion, location } = this.props;
+        if(this.props.done) {
             return <Redirect to={`/qualifiedPrograms/${this.props.selectedCase.id}`}/>
         }
 
@@ -40,15 +47,15 @@ export class Home extends Component {
                        <CaseCard {...this.props.person} {...this.props.selectedCase} ></CaseCard>
                     </Col>
                 </Row>
-                <Row>   
+                <Row>
                     <Col>
-                        <Question current={currentQuestion} />
+                        <Question current={currentQuestion} location={location} selectedCase={this.props.selectedCase.id}/>
                     </Col>
                 </Row>
             </Container>
         )
     }
-    
+
 }
 
 const mapStateToProps = (state) => {

@@ -10,11 +10,21 @@ import {
     CardBlock,
     CardTitle
 } from 'reactstrap';
+import {
+    push
+} from 'react-router-redux';
 import { connect } from "react-redux";
 import * as AnswerActions from 'actions/answers'
 import translation from 'translation';
 
+
+
 export class Question extends React.Component {
+
+    componentWillMount() {
+      console.log('componentWillMount')
+      console.log(this.props);
+    }
 
     constructor(props) {
         super(props);
@@ -23,8 +33,10 @@ export class Question extends React.Component {
     }
 
     answerQuestion(answer) {
+
         const { dispatch, current } = this.props;
-        dispatch(AnswerActions.selectedAnswer(answer, current))
+        dispatch(AnswerActions.selectedAnswer(answer, current));
+        dispatch(push(`/questions/${this.props.selectedCase}/${this.props.current+1}`))
     }
 
     questionForm() {
@@ -63,8 +75,11 @@ export class Question extends React.Component {
         }
     }
     render() {
+      console.log('rerender on back')
+      console.log(this.props);
+      console.log(this.props.text);
         return (
-            <Row className="mt-2">   
+            <Row className="mt-2">
                 <Col md={{ size: 8, push: 1, pull: 1, offset: 1 }} sm="12">
                     <Card className="text-center">
                         <CardBlock>
