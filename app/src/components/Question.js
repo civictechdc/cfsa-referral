@@ -3,6 +3,7 @@ import {
     Row,
     Col,
     Form,
+    Button,
     FormGroup,
     Label,
     Input,
@@ -94,15 +95,15 @@ export class Question extends React.Component {
                             {this.questionForm()}
                         </Form>
                         <CardBlock>
-                          <button
+                          <Button
                           onClick={
                             () => this.loadFirstQuestion()
-                          }> Reset </button>
-                          <button onClick={
+                          }> Reset </Button>
+                          <Button onClick={
                             () => this.loadPreviousQuestion()
                           }>
-                          back
-                          </button>
+                          Back
+                          </Button>
                         </CardBlock>
                     </Card>
                 </Col>
