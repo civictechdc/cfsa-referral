@@ -42,8 +42,8 @@ class FlagsContainer extends React.Component {
         const { dispatch, selectedCase } = this.props;
         return <Flags
             handleBackToCase={() => dispatch(push(`/cases/${selectedCase}`))}
-            handleGoToQuestions={() => dispatch(push(`/questions/${selectedCase}`))}
-            {...this.props} 
+            handleGoToQuestions={() => dispatch(push(`/questions/${selectedCase}/1`))}
+            {...this.props}
         />
     }
 }

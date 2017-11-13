@@ -3,6 +3,7 @@ import {
     Row,
     Col,
     Form,
+    Button,
     FormGroup,
     Label,
     Input,
@@ -10,21 +11,41 @@ import {
     CardBlock,
     CardTitle
 } from 'reactstrap';
+import {
+    push
+} from 'react-router-redux';
 import { connect } from "react-redux";
 import * as AnswerActions from 'actions/answers'
 import translation from 'translation';
 
+
 export class Question extends React.Component {
+
+    componentWillMount() {
+      console.log('componentWillMount')
+    }
 
     constructor(props) {
         super(props);
         this.answerQuestion = this.answerQuestion.bind(this);
         this.questionForm = this.questionForm.bind(this);
+        this.loadPreviousQuestion = this.loadPreviousQuestion.bind(this);
+        this.loadFirstQuestion = this.loadFirstQuestion.bind(this);
     }
 
     answerQuestion(answer) {
         const { dispatch, current } = this.props;
-        dispatch(AnswerActions.selectedAnswer(answer, current))
+        dispatch(AnswerActions.selectedAnswer(answer, current));
+    }
+
+    loadPreviousQuestion() {
+      const { dispatch, current } = this.props;
+      dispatch(AnswerActions.loadPreviousQuestion());
+    }
+
+    loadFirstQuestion() {
+        const {dispatch, current} = this.props;
+        dispatch(AnswerActions.loadFirstQuestion());
     }
 
     questionForm() {
@@ -64,7 +85,7 @@ export class Question extends React.Component {
     }
     render() {
         return (
-            <Row className="mt-2">   
+            <Row className="mt-2">
                 <Col md={{ size: 8, push: 1, pull: 1, offset: 1 }} sm="12">
                     <Card className="text-center">
                         <CardBlock>
@@ -73,6 +94,17 @@ export class Question extends React.Component {
                         <Form className="mr-3">
                             {this.questionForm()}
                         </Form>
+                        <CardBlock>
+                          <Button
+                          onClick={
+                            () => this.loadFirstQuestion()
+                          }> Reset </Button>
+                          <Button onClick={
+                            () => this.loadPreviousQuestion()
+                          }>
+                          Back
+                          </Button>
+                        </CardBlock>
                     </Card>
                 </Col>
             </Row>

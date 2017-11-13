@@ -8,7 +8,7 @@ import {
     Redirect
 } from 'react-router';
 import {connect} from 'react-redux';
-import Question from 'components/Question'
+import Question from 'components/Question';
 import {
     loadFirstQuestion
 } from 'actions/answers';
@@ -25,7 +25,7 @@ export class Home extends Component {
 
     render() {
         const { currentQuestion } = this.props;
-        if(this.props.done) { 
+        if(this.props.done) {
             return <Redirect to={`/qualifiedPrograms/${this.props.selectedCase.id}`}/>
         }
 
@@ -40,15 +40,15 @@ export class Home extends Component {
                        <CaseCard {...this.props.person} {...this.props.selectedCase} ></CaseCard>
                     </Col>
                 </Row>
-                <Row>   
+                <Row>
                     <Col>
-                        <Question current={currentQuestion} />
+                        <Question current={currentQuestion}/>
                     </Col>
                 </Row>
             </Container>
         )
     }
-    
+
 }
 
 const mapStateToProps = (state) => {
