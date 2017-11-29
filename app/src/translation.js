@@ -7,7 +7,7 @@ const en = {
   "TRUE": "Yes",
   "ABOUT": "About",
   "CONTACT": "Contact",
-  "LOGIN": "LOGIN",
+  "LOGIN": "Sign In",
   "LANGUAGE": "LANGUAGE",
   "FALSE": "No",
   "FRONT_YARD": "FrontYard",

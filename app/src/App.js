@@ -32,7 +32,7 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form'
 
-import {Container} from 'reactstrap';
+import {Container, Row, Col} from 'reactstrap';
 
 // Build the middleware for intercepting and dispatching navigation actions
 const middleware = routerMiddleware(history)
@@ -59,20 +59,24 @@ const App = () => {
       <ConnectedRouter history={history}>
         <div>
           <Linkbar history={history}/>
-          <Container>
-            <Switch>
-              <PrivateRoute exact path="/" component={SearchCases}/>
-              <PrivateRoute exact path="/cases" component={Cases}></PrivateRoute>
-              <PrivateRoute exact path="/cases/:selectedCase" component={CaseDetail}></PrivateRoute>
-              <PrivateRoute exact path="/flags/:selectedCase" component={Flags}></PrivateRoute>
-              <Route path="/login" component={Login}/>
-              <Route path="/about" component={About} />
-              <Route path="/contact" component={Contact} />
-              <PrivateRoute path="/questions/:selectedCase/:question" component={Home}></PrivateRoute>
-              <PrivateRoute path="/qualifiedprograms/:selectedCase" component={QualifiedPrograms} />
-              <Redirect to="/" />
-            </Switch>
-          </Container>
+          <Row>
+            <Col xs={0} md={3} />
+            <Col xs={12} md={6}>
+              <Switch>
+                <PrivateRoute exact path="/" component={SearchCases}/>
+                <PrivateRoute exact path="/cases" component={Cases}></PrivateRoute>
+                <PrivateRoute exact path="/cases/:selectedCase" component={CaseDetail}></PrivateRoute>
+                <PrivateRoute exact path="/flags/:selectedCase" component={Flags}></PrivateRoute>
+                <Route path="/login" component={Login}/>
+                <Route path="/about" component={About} />
+                <Route path="/contact" component={Contact} />
+                <PrivateRoute path="/questions/:selectedCase/:question" component={Home}></PrivateRoute>
+                <PrivateRoute path="/qualifiedprograms/:selectedCase" component={QualifiedPrograms} />
+                <Redirect to="/" />
+              </Switch>
+            </Col>
+            <Col xs={0} md={3} />
+          </Row>
         </div>
       </ConnectedRouter>
     </Provider>

@@ -39,31 +39,29 @@ const Cases = ({results, selectedCase, handleSelect, handleBack, handleContinue 
     }
 
     return(
-        <Row>
-            <Col>
-                <h4>{translation.t('CASES_SEARCH_RESULTS')}</h4>
-                <Row>
-                    <Col>
-                        {renderResults()}
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs="6" className="align-self-start">
-                        <Button onClick={handleBack} color="danger" size="sm" >{translation.t('BACK_TO_SEARCH')}</Button>
-                    </Col>
-                    <Col xs="6" className="align-self-end">
-                        <Button 
-                            disabled={!selectedCase ? true : false}
-                            onClick={selectedCase ? handleContinue : null} 
-                            color="danger" 
-                            size="sm"
-                        >
-                            {translation.t('SELECT_CASE')}
-                        </Button>
-                    </Col>
-                </Row>
-            </Col>
-        </Row>
+        <div>
+            <h4>{translation.t('CASES_SEARCH_RESULTS')}</h4>
+            <Row>
+                <Col>
+                    {renderResults()}
+                </Col>
+            </Row>
+            <Row>
+                <Col xs="6" className="align-self-start">
+                    <Button onClick={handleBack} color="danger" size="sm" >{translation.t('BACK_TO_SEARCH')}</Button>
+                </Col>
+                <Col xs="6" className="align-self-end">
+                    <Button 
+                        disabled={!selectedCase ? true : false}
+                        onClick={selectedCase ? handleContinue : null} 
+                        color="danger" 
+                        size="sm"
+                    >
+                        {translation.t('SELECT_CASE')}
+                    </Button>
+                </Col>
+            </Row>
+        </div>
     )
 }
 
