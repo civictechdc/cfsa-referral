@@ -22,7 +22,7 @@ export function searchCases({lastName, dateOfBirth}) {
         })
         .then(() => {
             const validCases = cases.filter((potentialCase) => {
-                return potentialCase.lastName.toLowerCase().includes(lastName)
+                return potentialCase.lastName.toLowerCase().includes(lastName.toLowerCase())
             });
             dispatch({
                 type: RECEIVE_CASES_SEARCH,
